@@ -1,0 +1,71 @@
+﻿\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
+
+\usetikzlibrary{shapes.misc}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 1pt. 
+cross/.default={6pt}}
+
+\begin{tikzpicture}
+	\draw[help lines] (0,0) grid (20,20);
+	%\draw [fill] (1,1) circle [radius=0.1];
+%%%%%%%%%%%%%%%%%%%%%
+\draw[black, ultra thick] (3,1) rectangle (7,5);
+
+\draw[black, ultra thick](2.7,1.3) circle [radius=0.3];
+\draw (2.7, 1.3) node[cross, very thick]{};
+\draw[black, ultra thick](2.7,2) circle [radius=0.3];
+\draw (2.7, 2) node[cross, very thick]{};
+\draw[black, ultra thick](2.7,2.7) circle [radius=0.3];
+\draw (2.7, 2.7) node[cross, very thick]{};
+\draw[black, ultra thick](2.7,3.4) circle [radius=0.3];
+\draw (2.7, 3.4) node[cross, very thick]{};
+
+
+\draw[black, ultra thick](7.3,1.3) circle [radius=0.3];
+\draw[black, fill](7.3,1.3) circle [radius=0.05];
+\draw[black, ultra thick](7.3,2) circle [radius=0.3];
+\draw[black, fill](7.3,2) circle [radius=0.05];
+\draw[black, ultra thick](7.3,2.7) circle [radius=0.3];
+\draw[black, fill](7.3,2.7) circle [radius=0.05];
+\draw[black, ultra thick](7.3,3.4) circle [radius=0.3];
+\draw[black, fill](7.3,3.4) circle [radius=0.05];
+
+ \draw[snake=coil,  line after snake=0pt,  segment aspect=0, segment length=10pt,color=blue, thick] (3,4) -> (7.2,4);
+
+\draw[fill, color=white] (7.03, 3.8) rectangle (7.5, 4.2);
+\draw[fill, color=white] (5.8, 4.8) rectangle (6.2, 5.2);
+\draw[black, ultra thick] (5.8, 4.8) -- (5.8, 5.2);
+\draw[black, ultra thick] (6.2, 4.8) -- (6.2, 5.2);
+
+\draw[black, ultra thick, -Stealth] (6, 4.5) to (6, 5.5);
+
+\node at (4,2) {A};
+\node at (6, 3) {B};
+\node at (6, 5.8){D};
+
+\node at (0,11) {0};
+\node at (1,11) {1};
+\node at (2,11) {2};
+\node at (3,11) {3};
+\node at (4,11) {4};
+\node at (5,11) {5};
+\node at (6,11) {6};
+\node at (7,11) {7};
+\node at (8,11) {8};
+\node at (9,11) {9};
+\node at (10,11) {10};
+
+\node at (0,0) {0};
+\node at (0,1) {1};
+\node at (0,2) {2};
+\node at (0,3) {3};
+\node at (0,4) {4};
+\node at (0,5) {5};
+\node at (0,6) {6};
+\node at (0,7) {7};
+\node at (0,8) {8};
+\node at (0,9) {9};
+\node at (0,10) {10};
+\end{tikzpicture}
