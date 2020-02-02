@@ -1,0 +1,22 @@
+﻿\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\begin{tikzpicture}
+	\draw[help lines] (0,0) grid (10,10);
+
+\draw [fill] (1,5) circle [radius=0.1];
+\draw [fill] (2,6) circle [radius=0.1];
+\draw [fill] (3,5) circle [radius=0.1];
+\draw [fill] (2,4) circle [radius=0.1];
+\node at (2,5) {Ga};
+\draw [fill] (4,4.7) circle [radius=0.1];
+\draw [fill] (4,5.3) circle [radius=0.1];
+\draw [fill] (5,6) circle [radius=0.1];
+\draw [fill] (6,5) circle [radius=0.1];
+\draw [fill] (5,4) circle [radius=0.1];
+\node at (5,5) {As};
+\coordinate (B) at (3.05,5.1);
+\coordinate (C) at (3.9,5.35);
+\draw[-Stealth, gray] (C) to [bend right = 50] (B);
+\node at (2,3) {nun negativ geladen};
+\node at (6,3) {nun negativ geladen};
+\end{tikzpicture}

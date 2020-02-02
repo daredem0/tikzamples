@@ -1,0 +1,119 @@
+﻿\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\begin{tikzpicture}
+	\draw[help lines] (0,0) grid (20,20);
+	%\draw [fill] (1,1) circle [radius=0.1];
+%%%%%%%%%%%%%%%%%%%%%
+
+\fill[blue] (1,1) rectangle (11,7);
+\draw[fill, white] (2,6) circle [radius=0.85];
+\draw[fill, white] (2,4) circle [radius=0.85];
+\draw[fill, white] (2,2) circle [radius=0.85];
+
+\draw[fill, white] (4,6) circle [radius=0.85];
+\draw[fill, white] (4,4) circle [radius=0.85];
+\draw[fill, white] (4,2) circle [radius=0.85];
+
+\draw[fill, white] (6,6) circle [radius=0.85];
+\draw[fill, white] (6,4) circle [radius=0.85];
+\draw[fill, white] (6,2) circle [radius=0.85];
+
+\draw[fill, white] (8,6) circle [radius=0.85];
+\draw[fill, white] (8,4) circle [radius=0.85];
+\draw[fill, white] (8,2) circle [radius=0.85];
+
+\draw[fill, white] (10,6) circle [radius=0.85];
+\draw[fill, white] (10,4) circle [radius=0.85];
+\draw[fill, white] (10,2) circle [radius=0.85];
+
+
+\draw[fill, darkgray] (2,6) circle [radius=0.15];
+\draw[fill, red] (2,6) circle [radius=0.08];
+\draw[blue, line width=2] (2,6) circle [radius=0.3];
+\draw[blue, line width=2] (2,6) circle [radius=0.55];
+\draw[fill, darkgray] (2,4) circle [radius=0.15];
+\draw[fill, red] (2,4) circle [radius=0.08];
+\draw[blue, line width=2] (2,4) circle [radius=0.3];
+\draw[blue, line width=2] (2,4) circle [radius=0.55];
+\draw[fill, darkgray] (2,2) circle [radius=0.15];
+\draw[fill, red] (2,2) circle [radius=0.08];
+\draw[blue, line width=2] (2,2) circle [radius=0.3];
+\draw[blue, line width=2] (2,2) circle [radius=0.55];
+
+\draw[fill, darkgray] (4,6) circle [radius=0.15];
+\draw[fill, red] (4,6) circle [radius=0.08];
+\draw[blue, line width=2] (4,6) circle [radius=0.3];
+\draw[blue, line width=2] (4,6) circle [radius=0.55];
+\draw[fill, darkgray] (4,4) circle [radius=0.15];
+\draw[fill, red] (4,4) circle [radius=0.08];
+\draw[blue, line width=2] (4,4) circle [radius=0.3];
+\draw[blue, line width=2] (4,4) circle [radius=0.55];
+\draw[fill, darkgray] (4,2) circle [radius=0.15];
+\draw[fill, red] (4,2) circle [radius=0.08];
+\draw[blue, line width=2] (4,2) circle [radius=0.3];
+\draw[blue, line width=2] (4,2) circle [radius=0.55];
+
+\draw[fill, darkgray] (6,6) circle [radius=0.15];
+\draw[fill, red] (6,6) circle [radius=0.08];
+\draw[blue, line width=2] (6,6) circle [radius=0.3];
+\draw[blue, line width=2] (6,6) circle [radius=0.55];
+\draw[fill, darkgray] (6,4) circle [radius=0.15];
+\draw[fill, red] (6,4) circle [radius=0.08];
+\draw[blue, line width=2] (6,4) circle [radius=0.3];
+\draw[blue, line width=2] (6,4) circle [radius=0.55];
+\draw[fill, darkgray] (6,2) circle [radius=0.15];
+\draw[fill, red] (6,2) circle [radius=0.08];
+\draw[blue, line width=2] (6,2) circle [radius=0.3];
+\draw[blue, line width=2] (6,2) circle [radius=0.55];
+
+\draw[fill, darkgray] (8,6) circle [radius=0.15];
+\draw[fill, red] (8,6) circle [radius=0.08];
+\draw[blue, line width=2] (8,6) circle [radius=0.3];
+\draw[blue, line width=2] (8,6) circle [radius=0.55];
+\draw[fill, darkgray] (8,4) circle [radius=0.15];
+\draw[fill, red] (8,4) circle [radius=0.08];
+\draw[blue, line width=2] (8,4) circle [radius=0.3];
+\draw[blue, line width=2] (8,4) circle [radius=0.55];
+\draw[fill, darkgray] (8,2) circle [radius=0.15];
+\draw[fill, red] (8,2) circle [radius=0.08];
+\draw[blue, line width=2] (8,2) circle [radius=0.3];
+\draw[blue, line width=2] (8,2) circle [radius=0.55];
+
+\draw[fill, darkgray] (10,6) circle [radius=0.15];
+\draw[fill, red] (10,6) circle [radius=0.08];
+\draw[blue, line width=2] (10,6) circle [radius=0.3];
+\draw[blue, line width=2] (10,6) circle [radius=0.55];
+\draw[fill, darkgray] (10,4) circle [radius=0.15];
+\draw[fill, red] (10,4) circle [radius=0.08];
+\draw[blue, line width=2] (10,4) circle [radius=0.3];
+\draw[blue, line width=2] (10,4) circle [radius=0.55];
+\draw[fill, darkgray] (10,2) circle [radius=0.15];
+\draw[fill, red] (10,2) circle [radius=0.08];
+\draw[blue, line width=2] (10,2) circle [radius=0.3];
+\draw[blue, line width=2] (10,2) circle [radius=0.55];
+
+
+\node at (0,11) {0};
+\node at (1,11) {1};
+\node at (2,11) {2};
+\node at (3,11) {3};
+\node at (4,11) {4};
+\node at (5,11) {5};
+\node at (6,11) {6};
+\node at (7,11) {7};
+\node at (8,11) {8};
+\node at (9,11) {9};
+\node at (10,11) {10};
+
+\node at (0,0) {0};
+\node at (0,1) {1};
+\node at (0,2) {2};
+\node at (0,3) {3};
+\node at (0,4) {4};
+\node at (0,5) {5};
+\node at (0,6) {6};
+\node at (0,7) {7};
+\node at (0,8) {8};
+\node at (0,9) {9};
+\node at (0,10) {10};
+\end{tikzpicture}

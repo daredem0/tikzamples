@@ -1,0 +1,36 @@
+﻿\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{3d}
+\begin{tikzpicture}[join=round]
+
+%\tikzstyle{conefill} = [fill=blue!20,fill opacity=0.8]
+\tikzstyle{conefill} = [pattern=north west lines, pattern color=blue]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (0,4);
+\coordinate (C) at (4,4);
+\coordinate (D) at (4,0);
+
+\coordinate (E) at (2,2);
+\coordinate (F) at (2,6);
+\coordinate (G) at (6,6);
+\coordinate (H) at (6,2);
+
+\draw[black, very thick] (A) rectangle (C);
+
+\draw[black, very thick] (D) to (H);
+\draw[black, very thick] (C) to (G);
+\draw[black, very thick] (B) to (F);
+\draw[black, very thick, dotted] (A) to (E);
+
+\draw[black, very thick] (F) to (G);
+\draw[black, very thick] (H) to (G);
+\draw[black, very thick, dotted] (E) to (F);
+\draw[black, very thick, dotted] (E) to (H);
+
+ \filldraw[conefill](A)--(H)--(F)--cycle;
+
+\node at (8,6) {(111)-Ebene};
+\draw[-Stealth, thick] (8,5.8) to [bend left = 20] (3,3);
+\end{tikzpicture}

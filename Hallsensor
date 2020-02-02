@@ -1,0 +1,102 @@
+﻿\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\begin{tikzpicture}
+	\draw[help lines] (0,0) grid (20,20);
+	%\draw [fill] (1,1) circle [radius=0.1];
+%%%%%%%%%%%%%%%%%%%%%
+
+%\fill[blue] (1,1) rectangle (11,7);
+%\draw[fill, white] (2,6) circle [radius=0.85];
+%\draw[fill, white] (2,4) circle [radius=0.85];
+%\draw[fill, white] (2,2) circle [radius=0.85];
+
+\draw[blue, thick] (2,2) rectangle (10,6);
+
+\draw[-, blue, thick] (2,6) to (3,7);
+\draw[-, blue, thick] (10,6) to (11,7);
+\draw[-, blue, thick] (10,2) to (11,3);
+
+\draw[-,blue,thick] (3,7) to (11,7);
+\draw[-,blue,thick] (11,3) to (11,7);
+
+\draw [dashed, blue, thick] (2,2) -- (3,3);
+\draw [dashed, blue, thick] (3,3) -- (3,7);
+\draw [dashed, blue, thick] (3,3) -- (11,3);
+
+\draw[fill, black](0,4.5) circle [radius=0.1];
+\draw[-, black, very thick] (0,4.5) to (2,4.5);
+\draw [dashed, black,very thick] (2,4.5) -- (2.5,4.5);
+\draw [dashed, black] (2.5,4.5) -- (10.5,4.5);
+\draw[fill, black](13,4.5) circle [radius=0.1];
+\draw[-Stealth, black, very thick] (10.5,4.5) to (12.95,4.5);
+
+\draw [dashed, black, very thick] (7.7,2) -- (7.7,7);
+\draw[-, black, very thick] (7.7,7) to (7.7,8);
+\draw[-, black, very thick] (7.7,8) to (6.49, 6.8);
+\draw[-, black, very thick] (6.5, 6.5) to (6.5, 6.8);
+\draw[-,black,very thick] (7.7, 2) to (6.7, 1);
+\draw[-,black,very thick] (6.7, 1) to (6.7,2);
+\draw[dashed,black,very thick] (6.7, 2) to (6.7,2.5);
+
+\draw[fill, white] (7.25, 1.5) circle [radius=0.35];
+\draw[black, very thick] (7.25, 1.5) circle [radius=0.35];
+\node at (7.25, 1.5) {V};
+\node at (7.75, 1.75) {+};
+\node at (7.05, 1.05) {-};
+
+\node at (0,5) {+};
+\node at (13,5) {-};
+\node at (1,5) {I};
+\draw[->, black] (0.8,4.7) to (1.2, 4.7);
+
+
+\draw[-,red,thick] (0.5, 3.5) to (2.5, 5.5);
+\draw[-,red,thick] (2.5, 3.5) to (4.5, 5.5);
+\draw[-,red,thick] (4.5, 3.5) to (6.5, 5.5);
+\draw[-,red,thick] (6.5, 3.5) to (8.5, 5.5);
+
+\draw[-,red,thick] (1.5, 1.5) to (3.5, 3.5);
+\draw[-,red,thick] (3.5, 1.5) to (5.5, 3.5);
+\draw[-,red,thick] (5.5, 1.5) to (7.5, 3.5);
+\draw[-,red,thick] (7.5, 1.5) to (9.5, 3.5);
+
+\draw[dashed, red,thick] (2.5, 5.5) to (4, 7);
+\draw[dashed, red,thick] (4.5, 5.5) to (6, 7);
+\draw[dashed, red,thick] (6.5, 5.5) to (8, 7);
+\draw[dashed, red,thick] (8.5, 5.5) to (10, 7);
+
+\draw[ -Stealth,red,thick] (4, 7) -- (4.5, 7.5);
+\draw[ -Stealth,red,thick] (6, 7) -- (6.5, 7.5);
+\draw[ -Stealth,red,thick] (8, 7) -- (8.5, 7.5);
+\draw[ -Stealth,red,thick] (10, 7) -- (10.5, 7.5);
+
+\draw[dashed, -Stealth,red,thick] (3.5, 3.5) -- (5.5, 5.5);
+\draw[dashed, -Stealth,red,thick] (5.5, 3.5) -- (7.5, 5.5);
+\draw[dashed, -Stealth,red,thick] (7.5, 3.5) -- (9.5, 5.5);
+\draw[dashed, -Stealth,red,thick] (9.5, 3.5) -- (11.5, 5.5);
+
+
+\node at (0,11) {0};
+\node at (1,11) {1};
+\node at (2,11) {2};
+\node at (3,11) {3};
+\node at (4,11) {4};
+\node at (5,11) {5};
+\node at (6,11) {6};
+\node at (7,11) {7};
+\node at (8,11) {8};
+\node at (9,11) {9};
+\node at (10,11) {10};
+
+\node at (0,0) {0};
+\node at (0,1) {1};
+\node at (0,2) {2};
+\node at (0,3) {3};
+\node at (0,4) {4};
+\node at (0,5) {5};
+\node at (0,6) {6};
+\node at (0,7) {7};
+\node at (0,8) {8};
+\node at (0,9) {9};
+\node at (0,10) {10};
+\end{tikzpicture}
