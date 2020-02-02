@@ -1,0 +1,96 @@
+﻿\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{snakes}
+
+\usetikzlibrary{shapes.misc}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 1pt. 
+cross/.default={6pt}}
+
+\begin{tikzpicture}[join=round]
+\draw[help lines] (0,0) grid (20,20);
+\tikzstyle{conefill} = [pattern=north east lines, pattern color=black]
+\draw[black, ultra thick](2,9)--(5.25,9);
+\draw[black, ultra thick](5.75,9)--(9,9);
+
+\draw[black, ultra thick](5.75, 9) -- (5.75, 9.5);
+\draw[black, ultra thick](5.25, 9) -- (5.25, 9.5);
+\draw[black, very thick, -Stealth, color=blue](5.5, 10) to (5.5, 8.75);
+
+\draw[black, ultra thick](2,8.5)--(2.75,8.5);
+\draw[black, ultra thick](2.75, 8.6) -- (2.75, 8.4);
+\draw[black, ultra thick](3.25, 8.6) -- (3.25, 8.4);
+\draw[black, very thick, -Stealth, color=blue](3, 8.75) to (3,8.4);
+
+\draw[black, ultra thick](3.25,8.5)--(3.75,8.5);
+\draw[black, ultra thick](3.75, 8.6) -- (3.75, 8.4);
+\draw[black, ultra thick](4.25, 8.6) -- (4.25, 8.4);
+\draw[black, very thick, -Stealth, color=blue](4, 8.75) to (4,8.4);
+
+\draw[black, ultra thick](4.25,8.5)--(4.75,8.5);
+\draw[black, ultra thick](4.75, 8.6) -- (4.75, 8.4);
+\draw[black, ultra thick](5.25, 8.6) -- (5.25, 8.4);
+\draw[black, very thick, -Stealth, color=blue](5, 8.75) to (5,8.4);
+
+\draw[black, ultra thick](5.25,8.5)--(5.75,8.5);
+\draw[black, ultra thick](5.75, 8.6) -- (5.75, 8.4);
+\draw[black, ultra thick](6.25, 8.6) -- (6.25, 8.4);
+\draw[black, very thick, -Stealth, color=blue](6, 8.75) to (6,8.4);
+
+\draw[black, ultra thick](6.25,8.5)--(6.75,8.5);
+\draw[black, ultra thick](6.75, 8.6) -- (6.75, 8.4);
+\draw[black, ultra thick](7.25, 8.6) -- (7.25, 8.4);
+\draw[black, very thick, -Stealth, color=blue](7, 8.75) to (7,8.4);
+
+\draw[black, ultra thick](7.25,8.5)--(7.75,8.5);
+\draw[black, ultra thick](7.75, 8.6) -- (7.75, 8.4);
+\draw[black, ultra thick](8.25, 8.6) -- (8.25, 8.4);
+\draw[black, very thick, -Stealth, color=blue](8, 8.75) to (8,8.4);
+
+\draw[black, ultra thick](8.25,8.5)--(9,8.5);
+
+
+\draw[black, ultra thick] (2,6) rectangle (9,6.5);
+\coordinate (A) at (2,6);
+\coordinate (B) at (9,6);
+\coordinate (C) at (2, 6.5);
+\coordinate (D) at (9,6.5);
+\filldraw[conefill](A)--(C)--(D)--(B)--cycle;
+
+\draw[black, thick, color=blue, -Stealth, rounded corners = 18pt](3, 8.3) --(3, 7.75) -- (2,7.75);
+\draw[black, thick, color=blue, -Stealth, rounded corners = 25pt](4, 8.3) --(4, 7.25) -- (2,7.25);
+\draw[black, thick, color=blue, -Stealth, rounded corners = 35pt](5, 8.3) --(5, 6.75) -- (2,6.75);
+
+\draw[black, thick, color=blue, -Stealth, rounded corners = 18pt](8, 8.3) --(8, 7.75) -- (9,7.75);
+\draw[black, thick, color=blue, -Stealth, rounded corners = 25pt](7, 8.3) --(7, 7.25) -- (9,7.25);
+\draw[black, thick, color=blue, -Stealth, rounded corners = 35pt](6, 8.3) --(6, 6.75) -- (9,6.75);
+
+\node at (6.5,10) {SiH4};
+\node at (3.5,5) {T};
+\draw[-Stealth, thick](3.8,5) to [bend right = 30] (5.5, 5.85);
+
+\node at (0,11) {0};
+\node at (1,11) {1};
+\node at (2,11) {2};
+\node at (3,11) {3};
+\node at (4,11) {4};
+\node at (5,11) {5};
+\node at (6,11) {6};
+\node at (7,11) {7};
+\node at (8,11) {8};
+\node at (9,11) {9};
+\node at (10,11) {10};
+
+\node at (0,0) {0};
+\node at (0,1) {1};
+\node at (0,2) {2};
+\node at (0,3) {3};
+\node at (0,4) {4};
+\node at (0,5) {5};
+\node at (0,6) {6};
+\node at (0,7) {7};
+\node at (0,8) {8};
+\node at (0,9) {9};
+\node at (0,10) {10};
+\end{tikzpicture}
