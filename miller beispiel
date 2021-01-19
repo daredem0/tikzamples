@@ -1,0 +1,53 @@
+﻿\usetikzlibrary{patterns}
+\begin{tikzpicture}[
+x=1cm, y=1cm,  scale=1.0, 
+font=\footnotesize,
+>=latex,   %Voreinstellung für Pfeilspitzen
+join=round,scale=1, every node/.style={scale=1}]
+\tikzstyle{conefill} = [pattern=north east lines, pattern color=blue]
+
+% Gitternetzlinien
+%\draw[ help lines] (0,-3.5) grid (10,10);
+
+% Y-Achse
+\draw[->] (0,0) -- (6,0) node[below] {$Y$}; 
+%Zahlen auf x-Achse
+%\foreach \x in {0,...,4}\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+
+% Z-Achse 
+\draw[->] (0,0) -- (2,5) node[left] {$Z$};%node[above left]
+
+
+%X-Achse
+\draw[->](0,0) -- (-3, -3) node[left]{$X$};
+
+
+\draw[black, fill](0,0) circle [radius=0.05];
+
+\draw[black, fill](1,0) circle [radius=0.05];
+\draw[black, fill](2,0) circle [radius=0.05];
+\draw[black, fill](3,0) circle [radius=0.05];
+\draw[black, fill](4,0) circle [radius=0.05];
+\draw[black, fill](5,0) circle [radius=0.05];
+
+\draw[black, fill](0.32,0.8) circle [radius=0.05];
+\draw[black, fill](0.64,1.6) circle [radius=0.05];
+\draw[black, fill](0.96,2.4) circle [radius=0.05];
+\draw[black, fill](1.28,3.2) circle [radius=0.05];
+\draw[black, fill](1.6,4) circle [radius=0.05];
+
+\draw[black, fill](-0.5,-0.5) circle [radius=0.05];
+\draw[black, fill](-1,-1) circle [radius=0.05];
+\draw[black, fill](-1.5,-1.5) circle [radius=0.05];
+\draw[black, fill](-2,-2) circle [radius=0.05];
+\draw[black, fill](-2.5,-2.5) circle [radius=0.05];
+
+\coordinate (A) at (-0.5,-0.5);
+\coordinate (B) at (3,0);
+\coordinate (C) at (0.64,1.6) ;
+
+
+\filldraw[conefill](A)--(C)--(B)--cycle;
+
+
+\end{tikzpicture}

@@ -1,0 +1,113 @@
+﻿\usetikzlibrary{shapes, arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{
+circuits.logic.US,
+circuits.logic.IEC,
+circuits.logic.CDH,
+circuits.ee.IEC,
+}
+
+%\HFilter % Tiefpaß
+\newcommand{\HFilter}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick] plot[domain=-pi:pi] (\x,{-sin(\x r)+2.75});
+\draw[thick] plot[domain=-pi:pi] (\x,{-sin(\x r)-2.75});
+\draw[thick] (-1,-1+2.75)--(1,1+2.75);
+\end{tikzpicture}
+}
+%Hilbertfilter
+\newcommand{\HilFilter}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick,-{Latex[scale=0.2mm]}]  (-9,0) -- (9,0)  {};
+\draw[thick,-{Latex[scale=0.2mm]}] (0,-9) -- (0,9)  {};
+\draw[red] plot[domain=-6.5:-0.15] (\x,{(\x)^(-1)});
+\draw[red] plot[domain=0.15:6.5] (\x,{(\x)^(-1)});
+\end{tikzpicture}
+}
+
+\tikzset{%Setup Style for all shapes
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  multi/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate}, % Output
+  connector/.style = {draw,  circle, fill, minimum size=5pt, inner sep=0pt, outer sep=0pt},
+  hFilter/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\HFilter}},
+  hilFilter/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\HilFilter}}
+}
+
+%define commands for node contents
+\newcommand{\suma}{\Large$+$}
+\newcommand{\multi}{\Large$\times$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
+\begin{tikzpicture}[auto, thick, node distance=2cm, >=triangle 45]
+\draw
+%define circle for input
+	node at (0,0) [right=-15mm]{ $\bigcirc$} 
+	node [input](input1){}
+%define multi with corresponding fc
+	node [multi, right = 2.5cm of input1] (multi1) {\multi}
+	node [below of=multi1] (fc1) {$\sin\left(\omega_1 t\right)$}
+%define multi with corresponding fc
+	node [multi, below of=fc1] (multi2) {\multi}
+	node [below of=multi2] (fc2) {$\sin\left(\omega_2 t\right)$}
+%define multi with corresponding fc
+	node [multi, below of=fc2] (multi3) {\multi}
+	node [below of=multi3] (fc3) {$\sin\left(\omega_3 t\right)$}
+%define placeholder dots
+	node [below of=fc3] (dot1) {\Huge$\cdot$}
+	node [below = 0pt of dot1] (dot2) {\Huge$\cdot$}
+	node [below = 0pt of dot2] (dot3) {\Huge$\cdot$}
+%define multi with corresponding fc
+	node [multi, below of=dot3] (multi6) {\multi}
+	node [below of=multi6] (fc6) {$\sin\left(\omega_6t\right)$}
+%place all filters
+	node [hFilter, right = 2.5cm of multi1] (ft1) {}
+	node [hilFilter, right = 2.5cm of multi2] (ft2) {}
+	node[above = 0.1cm of ft2] (lb1){$h(t) = \frac{1}{\pi t}$}
+	node [hFilter, right = 2.5cm of multi3] (ft3) {}
+	node [hFilter, right = 2.5cm of multi6] (ft6) {}
+%define circle for output
+	node [output, right of=ft1, label=$v_1(t)$] (out1){}
+	node [output, right = 14.5mm of out1] (outCon1){}
+	node [right = 12.5mm of out1](outCirc){$\bigcirc$}	
+%define circle for output
+	node [output, right of=ft2, label=$v_2(t)$] (out2){}
+	node [output, right = 14.5mm of out2] (outCon2){}
+	node [right = 12.5mm of out2](outCirc2){$\bigcirc$}	
+%define circle for output
+	node [output, right of=ft3, label=$v_3(t)$] (out3){}
+	node [output, right = 14.5mm of out3] (outCon3){}
+	node [right = 12.5mm of out3](outCirc3){$\bigcirc$}	
+%define circle for output
+	node [output, right of=ft6, label=$v_6(t)$] (out6){}
+	node [output, right = 14.5mm of out6] (outCon6){}
+	node [right = 12.5mm of out6](outCirc6){$\bigcirc$}	;
+%connect multis
+	\draw[-] (-9.5mm,0) -- (input1){};
+	\draw[->] (input1) |- node {$u(t)$}(multi1);
+	\draw[->] (input1) |- node {}(multi2);
+	\draw[->] (input1) |- node {}(multi3);
+	\draw[->] (input1) |- node {}(multi6);
+%connect fcs
+	\draw[->] (fc1) -- (multi1) {};
+	\draw[->] (fc2) -- (multi2) {};
+	\draw[->] (fc3) -- (multi3) {};
+	\draw[->] (fc6) -- (multi6) {};
+%connect filters
+	\draw[->] (multi1) --  (ft1);
+	\draw[->] (multi2) --  (ft2);
+	\draw[->] (multi3) --  (ft3);
+	\draw[->] (multi6) --  (ft6);
+%connect outputs
+	\draw[-] (ft1) -- (out1){};
+	\draw[->] (out1) -- (outCon1){};
+	\draw[-] (ft2) -- (out2){};
+	\draw[->] (out2) -- (outCon2){};
+	\draw[-] (ft3) -- (out3){};
+	\draw[->] (out3) -- (outCon3){};
+	\draw[-] (ft6) -- (out6){};
+	\draw[->] (out6) -- (outCon6){};
+\end{tikzpicture}

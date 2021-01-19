@@ -1,0 +1,25 @@
+﻿
+\usetikzlibrary{shapes,arrows}
+
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=4cm]
+\tikzstyle{con} = [draw, fill=blue!20, circle, node distance=4cm, inner sep=2pt, outer sep=5pt]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[auto, node distance=4cm,>=latex']
+    % We start by placing the blocks
+    \node [input, name=input] {Source};
+    \node [sum, right of=input] (sum) {Source};
+    \node [block, right of=sum] (controller) {ADC};
+	\node [right of=controller,node distance=2cm](in){};
+    \node [block, right of=in,node distance=2cm] (system) {DAC};
+    \node [sum, right of=system] (output) {Output};
+    \node [block, above of=in,node distance=2cm] (scope) {Scope};
+    \draw [->] (sum) --  (controller);
+	\draw[->] (controller) -- (system);
+    \draw [->] (system) -- (output);
+\draw[->] (scope) -- (in);
+\end{tikzpicture}

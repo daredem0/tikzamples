@@ -1,0 +1,93 @@
+﻿\usetikzlibrary{patterns}
+\begin{tikzpicture}[
+x=1cm, y=1cm,  scale=1.0, 
+font=\footnotesize,
+>=latex,   %Voreinstellung für Pfeilspitzen
+join=round,scale=1, every node/.style={scale=1}]
+\tikzstyle{conefill} = [pattern=north east lines, pattern color=blue]
+
+% Gitternetzlinien
+\draw[ help lines] (0,-3.5) grid (10,10);
+
+% x-Achse
+\draw[->] (0,0) -- (10,0) node[below] {$x$}; 
+%Zahlen auf x-Achse
+%\foreach \x in {0,...,4}\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+
+% y-Achse 
+\draw[->] (0,-1) -- (0,5) node[left] {$E$};%node[above left]
+%Zahlen auf y-Achse
+%\foreach \y in {-3,...,3}\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+
+%Ursprung
+%\draw[color=black] (0pt,-5pt) node[right] {\footnotesize $0$};
+
+%%%%%%%%%%%%%%%%
+%% FUNKTIONEN %%
+%%%%%%%%%%%%%%%%
+% Kubisches Polynom
+%\draw[thick,color=black, dotted] plot[samples=200, domain=1.7:-1.7] (\x,{(\x^3-\x)}) node[below] {$f(x)=x^3-x$};
+
+\draw[thick, color=black]plot[samples=200, domain=0.5:0](\x,{(-8*(\x)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=2:1](\x,{(-8*(\x-1.5)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=3.5:2.5](\x,{(-8*(\x-3)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=5:4](\x,{(-8*(\x-4.5)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=6.5:5.5](\x,{(-8*(\x-6)^2+2)});
+%\draw[thick, color=black]plot[samples=200, domain=7.3:7](\x,{(-8*(\x-7.5)^2+2)});
+
+%\draw[thick, color=black]plot[samples=200, domain=8.2:7.25](\x,{(-1.2*(\x-8.69)^2+4)});
+%\draw[thick, color=black]plot[samples=200, domain=8.2:7.25](\x,{(-1.2*(\x-8.69)^2+4)});
+
+\draw[black, thick, color=black, rounded corners = 18pt](7, 0) --(7.2, 2)  -- (8,3)--(10,3.8);
+\draw[black, thick, color=black, rounded corners = 18pt](7, 0) --(7.2, 2)  -- (8,3)--(9,2.4)--(10,1);
+\draw[black, thick, color=black, rounded corners = 18pt](7, 0) --(7.2, 2)  -- (8,3)--(9,2.4)--(10,0);
+
+\draw[line width=.5pt, color=blue, dash pattern=on 15pt off 15pt](0,4)--(10,4);
+
+\draw[thick, color=blue](0,2)--(7.3,2);
+
+\draw[thick, color=blue, dash pattern=on 29.7pt off 13pt](0.23,1.55)--(7.15,1.55);
+\draw[thick, color=blue, dash pattern=on 28.7pt off 14pt](0.25,1.45)--(7.14,1.45);
+
+\draw[thick, color=blue, dash pattern=on 23pt off 19.7pt](0.35,1.05)--(7.1,1.05);
+\draw[thick, color=blue, dash pattern=on 22.6pt off 20.1pt](0.35,.95)--(7.1,.95);
+
+\draw[thick, color=blue, dash pattern=on 18.4pt off 24.2pt](0.44,.55)--(7.05,.55);
+\draw[thick, color=blue, dash pattern=on 18.2pt off 24.4pt](0.44,.45)--(7.05,.45);
+
+\draw[black, thick](0.75,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](2.25,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](3.75,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](5.25,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](6.75,-0.5) circle [radius=0.3] node{$+$};
+
+
+\coordinate (A) at (0,2);
+\coordinate (B) at (7.3,2);
+\coordinate (C) at (0, 4);
+\coordinate (D) at (10,4);
+\coordinate (F) at (10,3.8);
+\coordinate (G) at (9,3.4);
+\coordinate (H) at (8.6, 3.25);
+\coordinate (E) at (8.2,3);
+\coordinate (I) at (8,2.9);
+\coordinate (J) at (7.5,2.4);
+\coordinate (K) at (7.25,1.9);
+\filldraw[conefill](A)--(C)--(D)--(F)--(G)--(H)--(E)--(I)--(J)--(K)--(B)--cycle;
+\node at (-0.3, 4) {$E_A$};
+
+%Rechter Teil
+% Wurzel aus Kubischem Polynom - positiver Ast
+%\draw[thick,color=red] plot[samples=200, domain=1:4] (\x,{sqrt(0.1*(\x^3-\x))}) node[above, xshift=-4em] {$g_+(x)=\sqrt{\cdot(x^3-x)}$};
+
+% Wurzel aus Kubischem Polynom - negativer Ast
+%\draw[thick,color=red, dashed] plot[samples=200, domain=1:4] (\x,{-sqrt(0.1*(\x^3-\x))}) node[below, xshift=-4em] {$g_-(x)=-\sqrt{\cdot(x^3-x)}$};
+
+%Linker Teil
+% Wurzel aus Kubischem Polynom - positiver Ast
+%\draw[thick,color=red] plot[samples=200, domain=0:-1] (\x,{sqrt(0.1*(\x^3-\x))}) node[] {};
+
+% Wurzel aus Kubischem Polynom - negativer Ast
+%\draw[thick,color=red, dashed] plot[samples=200, domain=0:-1] (\x,{-sqrt(0.1*(\x^3-\x))}) node[] {};
+
+\end{tikzpicture}

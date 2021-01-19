@@ -1,0 +1,14 @@
+﻿\begin{tikzpicture}
+
+\draw[color=pink, fill] (-5, 2) rectangle (5, 2.5) node [below right, color=black] {Si3N4};
+\draw[color=lime, fill] (-5, .25) rectangle (5, 2);
+\node at (5.6, 1.15) {SiO2};
+
+
+\draw[color=pink, fill] (-5, -.25) rectangle (5, .25) node [below right, color=black] {Si3N4};
+\draw[color=lime, fill] (-5, -.25) rectangle (5, -2);
+\node at (5.6, -1.15) {SiO2};
+
+\draw[color=pink, fill] (-5, -2.5) rectangle (5, -2) node [below right, color=black] {Si3N4};
+
+\end{tikzpicture}

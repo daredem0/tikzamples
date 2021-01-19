@@ -1,0 +1,60 @@
+﻿\usetikzlibrary{shapes, arrows}
+
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  multi/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate}, % Output
+  connector/.style = {draw,  circle, fill, minimum size=5pt, inner sep=0pt, outer sep=0pt}
+}
+
+\newcommand{\suma}{\Large$+$}
+\newcommand{\multi}{\Large$\times$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+%\newcommand{\textbullet}{$\bullet$}
+
+\begin{tikzpicture}[auto, thick, node distance=2cm, >=triangle 45]
+\draw
+%Drawing each individual Block
+	node at (0,0) [right=-5.2mm]{ $\bigcirc$}
+	node [input](input1){}
+	node [multi, right of=input1] (multi1) {\multi}
+	node [block, right of=multi1] (inte1) {\inte}
+	node at (6.8,0) [block] (Q1) {\Large $Q_1$}
+	node [block, below of=inte1] (ret1) {\Large $T_1$};
+%join blocks
+	\draw[->] (input1) -- node {$X(Z)$}(multi1);
+	\draw[->] (multi1) -- node {} (inte1);
+	\draw[->] (inte1) -- node {} (Q1);
+	\draw[->] (ret1) -| node[near end]{} (multi1);
+
+\draw
+	node at (5.4, -4) [multi](multi2) {\multi}
+	node at (1,-6) [multi](multi3) {\multi}
+	node [block, right of=multi3] (inte2) {\inte}
+	node [multi, right of=inte2] (multi4) {\multi}
+	node [block, right of=multi4] (inte3) {\inte}
+	node [block, right of=inte3] (Q2) {\Large $Q_2$}
+	node at (9, -8) [block] (ret2) {\Large $T_2$};
+
+	\draw[->] (multi3) -- node {} (inte2);
+	\draw[->] (inte2) -- node {} (multi4);
+	\draw[->] (multi4) -- node {} (inte3);
+	\draw[->] (inte3) -- node {} (Q2);
+	\draw[->] (ret2) -| (multi3);
+	\draw[->] (ret2) -| (multi4);
+%define nodes
+\draw 
+	node [connector] at (8,0) {}
+	node [connector] at (8,-2) {}
+	node [connector] at (5.4, 0) {};
+
+
+	\draw[->] (Q1) -- (8,0) |- node {}(ret1);
+
+	\draw[->] (5.4,0) -- (multi2);
+\end{tikzpicture}) -- (multi2);
+\end{tikzpicture}
