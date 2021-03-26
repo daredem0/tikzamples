@@ -1,12 +1,13 @@
-﻿\usetikzlibrary[arrows.meta,bending]
+﻿ \usetikzlibrary[arrows.meta,bending]
 \usetikzlibrary{positioning}
 \usetikzlibrary{patterns}
 \usetikzlibrary{3d}
+
 \begin{tikzpicture}[join=round]
 x=1cm, y=1cm,  scale=1.0, 
 font=\footnotesize,
 >=latex,   %Voreinstellung für Pfeilspitzen
-join=round,scale=1, every node/.style={scale=1}]
+join=round,scale=.8, every node/.style={scale=.8}]
 \tikzstyle{conefill} = [pattern=north east lines, pattern color=blue]
 
 % Gitternetzlinien
@@ -38,13 +39,7 @@ join=round,scale=1, every node/.style={scale=1}]
 \node at (-2.5, 4) {Parallelstrahl};
 \node at (-4, 1.7) {Brennpunktstrahl};
 \node at (4, 1) {Mittelpunktstrahl};
-
-
-
-
-
-
-\end{tikzpicture}dius=0.05];
+\end{tikzpicture}e}dius=0.05];
 
 \coordinate (A) at (-0.5,-0.5);
 \coordinate (B) at (3,0);

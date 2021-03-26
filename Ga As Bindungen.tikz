@@ -1,5 +1,5 @@
 ﻿\begin{tikzpicture}
-	\draw[help lines] (0,0) grid (20,10);
+	%\draw[help lines] (0,0) grid (20,10);
 	%\draw [fill] (1,1) circle [radius=0.1];
 
 \draw [fill] (1,5) circle [radius=0.1];
@@ -38,28 +38,28 @@
 \draw (6.5, 5) ellipse [x radius=1,y radius=0.5];
 \draw (9.5, 5) ellipse [x radius=1,y radius=0.5];
 
-
-\node at (0.3,10) {0};
-\node at (1,10) {1};
-\node at (2,10) {2};
-\node at (3,10) {3};
-\node at (4,10) {4};
-\node at (5,10) {5};
-\node at (6,10) {6};
-\node at (7,10) {7};
-\node at (8,10) {8};
-\node at (9,10) {9};
-\node at (10,10) {10};
-
-\node at (0,0) {0};
-\node at (0,1) {1};
-\node at (0,2) {2};
-\node at (0,3) {3};
-\node at (0,4) {4};
-\node at (0,5) {5};
-\node at (0,6) {6};
-\node at (0,7) {7};
-\node at (0,8) {8};
-\node at (0,9) {9};
-\node at (0,9.7) {10};
+% 
+% \node at (0.3,10) {0};
+% \node at (1,10) {1};
+% \node at (2,10) {2};
+% \node at (3,10) {3};
+% \node at (4,10) {4};
+% \node at (5,10) {5};
+% \node at (6,10) {6};
+% \node at (7,10) {7};
+% \node at (8,10) {8};
+% \node at (9,10) {9};
+% \node at (10,10) {10};
+% 
+% \node at (0,0) {0};
+% \node at (0,1) {1};
+% \node at (0,2) {2};
+% \node at (0,3) {3};
+% \node at (0,4) {4};
+% \node at (0,5) {5};
+% \node at (0,6) {6};
+% \node at (0,7) {7};
+% \node at (0,8) {8};
+% \node at (0,9) {9};
+% \node at (0,9.7) {10};
 \end{tikzpicture}

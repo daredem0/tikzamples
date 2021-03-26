@@ -1,8 +1,9 @@
 ﻿\usetikzlibrary[arrows.meta,bending]
 \usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
 \usetikzlibrary{patterns}
-\usetikzlibrary{3d}
-\begin{tikzpicture}[join=round]
+
+\begin{tikzpicture}[join=round,thick,scale=0.6, every node/.style={scale=0.6}]
 
 %\tikzstyle{conefill} = [fill=blue!20,fill opacity=0.8]
 \tikzstyle{conefill} = [pattern=north west lines, pattern color=blue]
@@ -29,8 +30,8 @@
 \draw[black, very thick, dotted] (E) to (F);
 \draw[black, very thick, dotted] (E) to (H);
 
- \filldraw[conefill](A)--(H)--(F)--cycle;
+ \filldraw[conefill](A)--(B)--(G)--(H)--cycle;
 
-\node at (8,6) {(111)-Ebene};
+\node at (8,6) {(110)-Ebene};
 \draw[-Stealth, thick] (8,5.8) to [bend left = 20] (3,3);
 \end{tikzpicture}

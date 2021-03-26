@@ -1,0 +1,49 @@
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes, arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta, bending}
+\usetikzlibrary{calc}
+\newcommand\ppbb{path picture bounding box}
+\pgfdeclarelayer{background}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{subprocess} = [rectangle, draw=black, fill=orange!30,
+                     minimum width=3cm, minimum height=1cm,inner xsep=3mm,
+                     text width =\pgfkeysvalueof{/pgf/minimum width}-2*\pgfkeysvalueof{/pgf/inner xsep},
+                     align=flush center,
+                     path picture={\draw 
+    ([xshift =2mm] \ppbb.north west) -- ([xshift= 2mm] \ppbb.south west)
+    ([xshift=-2mm] \ppbb.north east) -- ([xshift=-2mm] \ppbb.south east);
+                                  }]
+\def\xs{2cm}
+
+
+\begin{tikzpicture}[node distance=2cm, >=triangle 45]
+\begin{scope}[scale=.8, transform shape]
+
+\node (start) [startstop] {Start};
+\node (init) [subprocess, right of=start, xshift=\xs] {Init Parameters};
+\node (a) [subprocess, right of=init, xshift=\xs] {Set Clock\\Set Data};
+\node (check) [decision, right of=a, xshift=\xs] {Buffer empty?};
+\node (d) [subprocess, below of=check, yshift=-1cm] {Clock Low\\Data Low};
+\node (stop) [startstop, below of=d] {Stop};
+\coordinate (H1) at ($(a) + (2cm,2.5cm)$);
+
+\draw [->] (start) -- (init);
+\draw [->] (init) -- (a);
+\draw [->] (a) -- (check);
+\draw[rounded corners =5mm,->] (check.north) |- (H1) node [anchor=center, above]{No} -| (a.north);
+\draw [->] (check) -- node [anchor=center, right]{yes}(d);
+\draw [->] (d) -- (stop);
+
+ \begin{pgfonlayer}{background}
+        % Compute a few helper coordinates
+        \draw[fill=yellow!20,rounded corners, draw=black!50]
+            ($(start.west |- H1) + (-.25,.75)$) rectangle ($(stop.east |- stop.south) + (.5,-.25)$);
+    \end{pgfonlayer}
+\end{scope}
+\end{tikzpicture}

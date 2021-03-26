@@ -1,0 +1,22 @@
+﻿\begin{tikzpicture}[scale=1]
+\umlclass[x = 5, y =-2.25]{namespace::sig::Signal}{
+	- settings : Settings\\
+	- fs : int\\
+ - sample\_count : int\\
+ - data : list\pyLs{float}\\
+ - identity : string
+  }{
+ + \pyIn{init}(int, int) : void\\
+ \umlstatic{+ get\_signal\_object(Settings, int)} : (Signal/None, Exception)\\
+ + get\_settings(void) : Settings\\
+ + get\_data(void) : list\pyLs{float}\\
+ + get\_fs(void) : int \\
+ + get\_sample\_count(void) : int\\
+ + set\_settings(Settings) : void\\
+ + set\_data(list\pyLs{float}) : void\\
+ + set\_fs(int) : void \\
+ + set\_sample\_count(int) : void\\
+ + \pyIn{mul}(Signal) : float\\
+ + \pyIn{repr}(void) : string
+}
+\end{tikzpicture}

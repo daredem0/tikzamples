@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=1]
+\umlclass[x=0, y=4]{MainWindow}{}{}
+
+\umlclass[x=5, y=4]{QtWidgets::QWidget}{}{}
+\umlclass[x = 5, y =-2.25]{PyQtGraphWidget}{
+	- decay\_rate : float = None\\
+	- p1 : pyqtgraph.PlotItem = None\\
+ - p2 : pyqtgraph.PlotItem = None\\
+ - plot\_container : QtWidgets.QVBoxLayout\\
+ - line\_t : pyqtgraph.PlotDataItem\\
+ - line\_decay\_rate : pyqtgraph.PlotDataItem\\
+ - line\_f\_abs : pyqtgraph.PlotDataItem\\
+ - line\_f\_real : pyqtgraph.PlotDataItem\\
+ - line\_f\_imag : pyqtgraph.PlotDataItem\\
+ - line\_peaks : pyqtgraph.PlotDataItem\\
+  }{
+ + \pyIn{init}(QWidget) : void\\
+ + set\_broader(float) : void\\
+ + setup\_plots(boolean) : void\\
+ + plot(Signal, Boolean, ..., Boolean) : void\\
+...
+}
+\umlinherit[geometry=-|]{PyQtGraphWidget}{QtWidgets::QWidget}
+\umlcompo[geometry=|-, arg1=1, arg2=1, pos2=1.8, pos1=0.1]{MainWindow}{PyQtGraphWidget}
+\end{tikzpicture}

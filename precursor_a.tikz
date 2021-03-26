@@ -1,16 +1,17 @@
 ﻿\usetikzlibrary[arrows.meta,bending]
 \usetikzlibrary{positioning}
-\usetikzlibrary{patterns}
 \usetikzlibrary{snakes}
+\usetikzlibrary{patterns}
 
-\usetikzlibrary{shapes.misc}
 \tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
 %default radius will be 1pt. 
 cross/.default={6pt}}
 
-\begin{tikzpicture}[join=round]
-%\draw[help lines] (0,0) grid (20,20);
+\begin{tikzpicture}[join=round,scale=1, every node/.style={scale=1}]
 \tikzstyle{conefill} = [pattern=north east lines, pattern color=black]
+	%\draw [fill] (1,1) circle [radius=0.1];
+%%%%%%%%%%%%%%%%%%%%%
+
 \draw[black, ultra thick](2,9)--(5.25,9);
 \draw[black, ultra thick](5.75,9)--(9,9);
 
@@ -67,30 +68,5 @@ cross/.default={6pt}}
 \draw[black, thick, color=blue, -Stealth, rounded corners = 35pt](6, 8.3) --(6, 6.75) -- (9,6.75);
 
 \node at (6.5,10) {SiH4};
-\node at (3.5,5) {T};
-\draw[-Stealth, thick](3.8,5) to [bend right = 30] (5.5, 5.85);
 
-% \node at (0,11) {0};
-% \node at (1,11) {1};
-% \node at (2,11) {2};
-% \node at (3,11) {3};
-% \node at (4,11) {4};
-% \node at (5,11) {5};
-% \node at (6,11) {6};
-% \node at (7,11) {7};
-% \node at (8,11) {8};
-% \node at (9,11) {9};
-% \node at (10,11) {10};
-% 
-% \node at (0,0) {0};
-% \node at (0,1) {1};
-% \node at (0,2) {2};
-% \node at (0,3) {3};
-% \node at (0,4) {4};
-% \node at (0,5) {5};
-% \node at (0,6) {6};
-% \node at (0,7) {7};
-% \node at (0,8) {8};
-% \node at (0,9) {9};
-% \node at (0,10) {10};
 \end{tikzpicture}

@@ -1,35 +1,9 @@
 ﻿\usetikzlibrary[arrows.meta,bending]
 \usetikzlibrary{positioning}
 \begin{tikzpicture}
-	\draw[help lines] (0,0) grid (20,20);
+	%\draw[help lines] (0,0) grid (20,20);
 	%\draw [fill] (1,1) circle [radius=0.1];
 %%%%%%%%%%%%%%%%%%%%%
-
-
-
-\node at (0,11) {0};
-\node at (1,11) {1};
-\node at (2,11) {2};
-\node at (3,11) {3};
-\node at (4,11) {4};
-\node at (5,11) {5};
-\node at (6,11) {6};
-\node at (7,11) {7};
-\node at (8,11) {8};
-\node at (9,11) {9};
-\node at (10,11) {10};
-
-\node at (0,0) {0};
-\node at (0,1) {1};
-\node at (0,2) {2};
-\node at (0,3) {3};
-\node at (0,4) {4};
-\node at (0,5) {5};
-\node at (0,6) {6};
-\node at (0,7) {7};
-\node at (0,8) {8};
-\node at (0,9) {9};
-\node at (0,10) {10};
 \draw [fill] (7,8) circle [radius=0.1];
 \draw [fill] (8,9) circle [radius=0.1];
 \draw [fill] (9,8) circle [radius=0.1];
@@ -60,6 +34,22 @@
 \node at (11,5) {Si};
 \draw [fill] (10,2) circle [radius=0.1];
 \draw [fill] (11,3) circle [radius=0.1];
+\draw [fill] (12,2) circle [radius=0.1];
+\draw [fill] (11,1) circle [radius=0.1];
+\node at (11,2) {Si};
+\draw [fill] (11,0) circle [radius=0.1];
+\draw [fill] (11,10) circle [radius=0.1];
+\draw [fill] (13,8) circle [radius=0.1];
+\draw [fill] (13,5) circle [radius=0.1];
+\draw [fill] (13,2) circle [radius=0.1];
+
+
+\coordinate (B) at (6,4.9);
+\coordinate (C) at (5.1,4);
+\draw[-Stealth, gray, thick] (C) to [bend right = 50] (B);
+
+\end{tikzpicture}
+adius=0.1];
 \draw [fill] (12,2) circle [radius=0.1];
 \draw [fill] (11,1) circle [radius=0.1];
 \node at (11,2) {Si};

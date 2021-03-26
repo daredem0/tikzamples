@@ -1,0 +1,202 @@
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta, bending}
+\newcommand{\mx}[1]{\mathbf{\bm{#1}}} % Matrix command
+\newcommand{\vc}[1]{\mathbf{\bm{#1}}} % Vector command 
+\usetikzlibrary{
+circuits.logic.US,
+circuits.logic.IEC,
+circuits.logic.CDH,
+circuits.ee.IEC,
+}
+\tikzset{
+diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.south west) -|
+                         (path picture bounding box.north east) -- cycle;}},
+reversed diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.north west) |- 
+                         (path picture bounding box.south east) -- cycle;}}
+}
+\pgfdeclarelayer{background}
+%\HFilter % Tiefpaß
+\newcommand{\HFilter}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick] plot[domain=-pi:pi] (\x,{-sin(\x r)+2.75});
+\draw[thick] plot[domain=-pi:pi] (\x,{-sin(\x r)-2.75});
+\draw[thick] (-1,-1+2.75)--(1,1+2.75);
+\end{tikzpicture}
+}
+%Hilbertfilter
+\newcommand{\HilFilter}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick,-{Latex[scale=0.2mm]}]  (-9,0) -- (9,0)  {};
+\draw[thick,-{Latex[scale=0.2mm]}] (0,-9) -- (0,9)  {};
+\draw[red] plot[domain=-6.5:-0.15] (\x,{(\x)^(-1)});
+\draw[red] plot[domain=0.15:6.5] (\x,{(\x)^(-1)});
+\end{tikzpicture}
+}
+
+\tikzset{%Setup Style for all shapes
+  block/.style    = {draw, rectangle, minimum height = 3em,
+    minimum width = 8em,},
+  longBlock/.style    = {draw, rectangle, minimum height = 14.4em,
+    minimum width = 5em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  multi/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate}, % Output
+  connector/.style = {draw,  circle, fill, minimum size=5pt, inner sep=0pt, outer sep=0pt},
+  hFilter/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\HFilter}},
+  hilFilter/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\HilFilter}}
+}
+ 
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\tikzset{
+diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.south west) -|
+                         (path picture bounding box.north east) -- cycle;}},
+reversed diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.north west) |- 
+                         (path picture bounding box.south east) -- cycle;}}
+}
+
+% Define a few styles and constants
+\tikzstyle{sub}=[draw, fill=blue!20, text width=7em, 
+    text centered, minimum height=2.5em]
+\tikzstyle{subR}=[draw, fill=red!20, text width=7em, 
+    text centered, minimum height=2.5em]
+\tikzstyle{major}=[draw, text width=7em, 
+    text centered, minimum height=7em,diagonal fill={red!20}{blue!20}]
+\tikzstyle{majorR}=[draw, fill=red!20, text width=7em, 
+    text centered, minimum height=7em]
+\def\blockHorDist{5}
+\def\edgedist{2.5}
+\def\blockwidth{3}
+\def\blockVertDist{1.3}
+\def\offset{(-1.4,0.7)}
+\def\root{(0,0)}
+\newcommand{\vertDis}{2}
+\newcommand{\horDis}{5}
+\newcommand{\move}[2]{#1*\horDis, #2*\vertDis}
+\newcommand{\rgb}[3]{{rgb:red,#1;green,#2;blue,#3}}
+
+\definecolor{ustuttgarthellblau}{RGB}{0,190,255}
+\definecolor{ustuttgartmittelblau}{RGB}{0,65,145}
+\definecolor{ustuttgartanthrazit}{RGB}{62,68,76}
+\definecolor{mittelblau}{RGB}{0, 126, 198}
+\definecolor{violettblau}{cmyk}{0.9, 0.6, 0, 0}
+\definecolor{rot}{RGB}{238, 28 35}
+\definecolor{apfelgruen}{RGB}{140, 198, 62}
+\definecolor{gelb}{RGB}{1, 221, 0}
+\definecolor{orange}{RGB}{244, 111, 33}
+\definecolor{pink}{RGB}{237, 0, 140}
+\definecolor{lila}{RGB}{128, 10, 145}
+\definecolor{hellgrau}{RGB}{224, 224, 224}
+\definecolor{mittelgrau}{RGB}{128, 128, 128}
+\definecolor{dunkelgrau}{RGB}{80,80,80}
+\definecolor{anthrazit}{RGB}{19, 31, 31}
+\definecolor{uniSgrey}{RGB}{128,128,128} %Defines the same grey
+
+\definecolor{my_red}{RGB}{180,0,0} 
+\definecolor{my_green}{RGB}{0,180,0}
+\definecolor{my_blue}{RGB}{0,0,180}
+
+%\definecolor{headblue}{HTML}{0099FF}%{RGB}{223,200,254}
+%\definecolor{anthrazit}{cmyk}{0.5, 0.2, 0.2, 0.85}
+\definecolor{grey70}{cmyk}{0.35, 0.14, 0.14, 0.6}
+\definecolor{grey50}{cmyk}{0.25, 0.1, 0.1, 0.43}
+\definecolor{grey30}{cmyk}{0.15, 0.06, 0.06, 0.26}
+
+\definecolor{darkblue}{RGB}{71,98,177}
+\definecolor{blue1}{cmyk}{1.0, 0.4, 0, 0}
+\definecolor{blue2}{cmyk}{0.7, 0.2, 0, 0}%{HTML}{0099FF}
+\definecolor{blue3}{cmyk}{0.5, 0.1, 0, 0}
+\definecolor{blue4}{cmyk}{0.3, 0.05, 0, 0}
+\definecolor{violettblau}{cmyk}{0.9, 0.6, 0, 0}
+\definecolor{violettblau50}{cmyk}{0.45, 0.26, 0, 0}
+%\definecolor{gelb}{cmyk}{0, 0.1, 1, 0}
+\definecolor{violett}{cmyk}{0.6, 1, 0, 0}
+\definecolor{violett_html}{HTML}{6600FF}
+\definecolor{tuerkis}{cmyk}{1, 0, 0.4, 0}
+\definecolor{tuerkis_html}{HTML}{00FF99}
+%\definecolor{apfelgruen}{cmyk}{0.5, 0, 1, 0}
+
+\definecolor{mittelblau}{RGB}{0,126,198}
+\definecolor{apfelgruen}{RGB}{140,198,62}
+\definecolor{rot}{RGB}{238,28,35}
+\definecolor{gelb}{RGB}{255,221,0}
+\definecolor{textgrau}{RGB}{128,128,128}
+\definecolor{hellgrau}{RGB}{224,224,224}
+\definecolor{anthrazit}{RGB}{19,31,31} 
+
+\definecolor{unicolor}{named}{violettblau}%{cmyk}{1.0, 0.4, 0, 0}%{100,100,254}%{223,227,254}
+\definecolor{unicolorlys}{RGB}{255,10,0}
+\definecolor{unicolorlyslys}{RGB}{255,30,0}
+\definecolor{unicolorlyslyslys}{RGB}{255,223,0}
+
+
+
+\begin{tikzpicture}[auto, node distance=2cm, >=triangle 45]
+\begin{scope}[scale=.8, transform shape]
+    %\node (naveq) [naveqs] {Navigation equations};
+    % Note the use of \path instead of \node at ... below. 
+
+	%\draw[help lines] (-20,-20) grid (20,20);
+	\coordinate (ROOT) at (0,0);
+	\coordinate (NI_HARD) at (ROOT);
+	\coordinate (LAB_HARD) at ($(ROOT) + (\move{1}{0})$);
+	\coordinate (SPI) at ($(ROOT) + (\move{0}{1})$);
+	\coordinate (VISA) at ($(ROOT) + (\move{1}{1})$);
+	\coordinate (MES) at ($(ROOT) + (\move{0}{2})$);
+	\coordinate (SIGN) at ($(ROOT) + (\move{1}{2})$);
+	\coordinate (DSP) at ($(ROOT) + (\move{1}{3})$);
+	\coordinate (LOG) at ($(ROOT) + (\move{2}{3})$);
+	\coordinate (GUI) at ($(ROOT) + (\move{2}{4})$);
+
+	\draw
+		node [block, fill=hellgrau, xshift=-2em, minimum width = 12em] at (NI_HARD) (ni_hard) {NI Hardware}
+		node [block, fill=hellgrau] at (LAB_HARD) (lab_hard) {Lab Hardware}
+		node [block, fill=blue1!80] at (SPI) (spi) {SPI}
+		node [block, fill=blue1!80] at (VISA) (visa) {VISA}
+		node [block, fill=blue1!80, xshift=-2em, minimum width = 12em] at (MES) (mes) {Measurement}
+		node [block, fill=blue1!80] at (SIGN) (sign) {Signal}
+		node [block, fill=blue1!80] at (DSP) (dsp) {Signal Processing}
+		node [block, fill=hellgrau, xshift=4em] at (LOG) (log) {Logging}
+		node [block, fill=blue1!80, xshift=2em, minimum width = 12em] at (GUI) (gui) {GUI};
+
+\draw[transform canvas={xshift=-0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (ni_hard.north -| spi) --node [sloped, anchor=center, above]{} (spi);
+\draw[transform canvas={xshift=0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (ni_hard.north -| spi) -- (spi);
+
+\draw[transform canvas={xshift=-0.4ex-6*\horDis}, -{Triangle[left,width=2mm,length=2mm]}] (ni_hard.north -| mes) --node [sloped, anchor=center, above]{} (mes);
+\draw[transform canvas={xshift=0.4ex-6*\horDis}, {Triangle[left,width=2mm,length=2mm]}-] (ni_hard.north -| mes) -- (mes);
+
+\draw[transform canvas={xshift=-0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (lab_hard.north -| visa) --node [sloped, anchor=center, above]{} (visa);
+\draw[transform canvas={xshift=0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (lab_hard.north -| visa) -- (visa);
+
+\draw[transform canvas={yshift=0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (mes) --node [sloped, anchor=center, above]{} (sign);
+\draw[transform canvas={yshift=-0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (mes) -- (sign);
+
+\draw[transform canvas={xshift=-0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (sign.north -| dsp) --node [sloped, anchor=center, above]{} (dsp);
+\draw[transform canvas={xshift=0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (sign.north -| dsp) -- (dsp);
+
+\draw[rounded corners =5mm,transform canvas={yshift=0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (sign.east) -|   ($(gui.south) + (-1.75,-0.4ex)$);
+\draw[rounded corners =5mm,transform canvas={yshift=-0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (sign.east) -| ($(gui.south) + (-1.75 ,0.4ex) + (0.8ex,0)$);
+
+\draw[transform canvas={xshift=0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (gui.south -| log) --node [sloped, anchor=center, above]{} (log);
+\draw[transform canvas={xshift=-0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (gui.south -| log) -- (log);
+
+\draw[rounded corners =5mm,transform canvas={xshift=-0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (mes.north) |-  ($(gui.west) + (.4ex,.4ex)$);
+\draw[rounded corners =5mm,transform canvas={xshift=0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (mes.north) |- ($(gui.west) + (-.4ex ,-.4ex)$);
+
+\draw node at ($(mes.west |- gui) + (1.5,.4)$) (nmr) {PyNMR};
+
+    \begin{pgfonlayer}{background}
+        \draw[fill=yellow!20,rounded corners, draw=black!50]
+            ($(mes.west |- gui.north) + (-.5,.75)$) rectangle ($(gui.east |- lab_hard.south) + (.25,-.25)$);
+        \draw[fill=blue1!60,rounded corners, draw=black!50]
+            ($(mes.west |- gui.north) + (.5,.35)$) rectangle ($(log.west |- visa) + (-.25,-.25)$);
+    \end{pgfonlayer}
+\end{scope}
+\end{tikzpicture}
+

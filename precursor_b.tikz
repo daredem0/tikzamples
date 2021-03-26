@@ -1,18 +1,17 @@
 ﻿\usetikzlibrary[arrows.meta,bending]
 \usetikzlibrary{positioning}
-\usetikzlibrary{patterns}
 \usetikzlibrary{snakes}
+\usetikzlibrary{patterns}
 
-\usetikzlibrary{shapes.misc}
 \tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
 %default radius will be 1pt. 
 cross/.default={6pt}}
 
-\begin{tikzpicture}[join=round]
+\begin{tikzpicture}[join=round,scale=1, every node/.style={scale=1}]
 \tikzstyle{conefill} = [pattern=north east lines, pattern color=black]
-	%\draw[help lines] (0,0) grid (20,20);
 	%\draw [fill] (1,1) circle [radius=0.1];
 %%%%%%%%%%%%%%%%%%%%%
+
 \draw[black, very thick, color=blue, -Stealth, rounded corners = 20pt](5, 9.8) --(5, 9) -- (2,9);
 \draw[black, very thick, color=blue, -Stealth, rounded corners = 20pt](6, 9.8) --(6, 9) -- (9,9);
 \draw[black, ultra thick, dash pattern=on 5pt off 10pt](2,8.5)--(9,8.5);
@@ -33,27 +32,4 @@ cross/.default={6pt}}
 \draw[thick, color=black, Stealth-Stealth](8.5,8.25) -- (8.5,6.25);
 \node at (9, 7.25) {$\delta(P)$};
 
-% \node at (0,11) {0};
-% \node at (1,11) {1};
-% \node at (2,11) {2};
-% \node at (3,11) {3};
-% \node at (4,11) {4};
-% \node at (5,11) {5};
-% \node at (6,11) {6};
-% \node at (7,11) {7};
-% \node at (8,11) {8};
-% \node at (9,11) {9};
-% \node at (10,11) {10};
-% 
-% \node at (0,0) {0};
-% \node at (0,1) {1};
-% \node at (0,2) {2};
-% \node at (0,3) {3};
-% \node at (0,4) {4};
-% \node at (0,5) {5};
-% \node at (0,6) {6};
-% \node at (0,7) {7};
-% \node at (0,8) {8};
-% \node at (0,9) {9};
-% \node at (0,10) {10};
 \end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=1]
+\umlclass[x = 5, y =-2.25, width=13cm]{namespace::viiisa::VIISa}{
+	- resource : string\\
+	- rm : pyvisa.highlevel.ResourceManager
+  }{
+   \umlstatic{+ get\_visa\_devices(void) : list\pyLs{string}}
+}
+\umlclass[x = 5, y =-7.25, width=13cm]{namespace::viiisa::AgilentVIISa}{
+  }{
+  + \pyIn{init}(string) : void \\
+  + \pyIn{del}(void) : void \\
+  + get\_visa\_session(void) : pyvisa.resources.Resource\\
+  + get\_visa\_resource(void) : string\\
+   \umlstatic{+ set\_fsk\_on\_ext\_trig(pyvisa.resources.Resource, string, float, float): void}
+}
+\umluniassoc[geometry=-|]{namespace::viiisa::AgilentVIISa}{namespace::viiisa::VIISa}
+\end{tikzpicture}

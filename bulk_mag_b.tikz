@@ -1,0 +1,56 @@
+\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{snakes}
+
+\usetikzlibrary{shapes.misc}
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 1pt. 
+cross/.default={6pt}}
+
+\begin{tikzpicture}[join=round]
+\tikzstyle{conefill} = [pattern=north east lines, pattern color=black]
+%	\draw[help lines] (0,0) grid (20,20);
+	%\draw [fill] (1,1) circle [radius=0.1];
+%%%%%%%%%%%%%%%%%%%%%
+\node at  (4.34,4.82) [] (As) {};
+\node at  (5.3,5.1) [] (Ae) {};
+\draw[very thick, color=blue, -Stealth](As) -- (Ae);
+\node at  (5.17,5.29) [] (Bs) {};
+\node at  (5.36,4.31) [] (Be) {};
+\draw[very thick, color=blue, -Stealth](Be) -- (Bs);
+\node at  (5.13,5.44) [] (Cs) {};
+\node at  (5.8,6.18) [] (Ce) {};
+\draw[very thick, color=blue, -Stealth](Cs) -- (Ce);
+\node at  (5.06,4.79) [] (Ds) {};
+\node at  (5.97,4.38) [] (De) {};
+\draw[very thick, color=blue, -Stealth](De) -- (Ds);
+\node at  (5.08,5.14) [] (Es) {};
+\node at  (4.97,6.14) [] (Ee) {};
+\draw[very thick, color=blue, -Stealth](Es) -- (Ee);
+\node at  (5.33,4.66) [] (Fs) {};
+\node at  (6.02,3.93) [] (Fe) {};
+\draw[very thick, color=blue, -Stealth](Fe) -- (Fs);
+\node at  (4.93,4.82) [] (Gs) {};
+\node at  (4.36,4.0) [] (Ge) {};
+\draw[very thick, color=blue, -Stealth](Ge) -- (Gs);
+\node at  (5.46,5.57) [] (Hs) {};
+\node at  (5.83,6.5) [] (He) {};
+\draw[very thick, color=blue, -Stealth](Hs) -- (He);
+\node at  (5.21,5.05) [] (Is) {};
+\node at  (6.08,4.55) [] (Ie) {};
+\draw[very thick, color=blue, -Stealth](Is) -- (Ie);
+\node at  (5.25,4.72) [] (Js) {};
+\node at  (4.5,5.38) [] (Je) {};
+\draw[very thick, color=blue, -Stealth](Js) -- (Je);
+
+\node at (5.25,3.5) [] (fat_s){};
+\node at (5.25,6.5) [] (fat_e){};
+
+\node at (5.7, 3.7)[]{$B_0$};
+
+\begin{scope}[transparency group, opacity=0.75]
+\draw[line width=1mm, color=black, -Stealth](fat_s) -- (fat_e);
+\end{scope}
+
+\end{tikzpicture}

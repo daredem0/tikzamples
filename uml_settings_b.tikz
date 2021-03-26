@@ -1,0 +1,48 @@
+﻿\begin{tikzpicture}[scale=1]
+\umlclass[x = 5, y =-2.25]{settings::Settings}{
+	- fs : int = None\\
+ - read\_pin\_I : string = None\\
+ - read\_pin\_Q : string = None\\
+ - device\_name : string = None\\
+ - pulsetype : string = None\\
+ - measure\_time : float = 0.0\\
+  }{
+ + \pyIn{init}(int, string, string, string, float) : void\\
+ \umlstatic{+ get\_signal\_object(Settings, int)} : (Signal/None, Exception)\\
+ + get\_settings\_object(dict) : Settings/None\\
+ + set\_from\_dict(dict) : void\\
+ + gen\_name\_array(void) : list\pyLs{string}\\
+ \textit{+ gen\_value\_array()}\\
+ \textit{+ set\_lines()}\\
+...
+}
+\umlclass[x = 1, y =-9.25]{settings::SimplePulseSettings}{
+- pulsetype : string \\$\qquad\qquad$= "SimplePulse"\\
+- pulse : Pulse  = None\\}{
+...
+}
+\umlclass[x = 9, y =-9.25]{settings::IQPulseSettings}{
+ - pulsetype : string \\ $\qquad\qquad$= "IQ\_SimplePulse"\\
+ - pulse : Pulse  = None}{...
+}
+\umlinherit[geometry=-|]{settings::SimplePulseSettings}{settings::Settings}
+\umlinherit[geometry=-|]{settings::IQPulseSettings}{settings::Settings}
+\end{tikzpicture} \noindent
+% \begin{figure}[H]
+% \centering
+% 	\input{./tex/figures/uml_signal_a.tex}
+% 	\caption{Class diagram of \texttt{Signal} and \texttt{Settings}}
+% 	\label{fig:soft_signals_a}
+% \end{figure}ometry=|-]{namespace::settings::SimplePulseSettings}{namespace::settings::Settings}
+
+
+%  
+%  - pulse : Pulse  = None\\
+%   }{
+%  + \pyIn{init}(int, string, string, string, float) : void\\
+%  \umlstatic{+ get\_signal\_object(Settings, int)} : (Signal/None, Exception)\\
+%  + get\_settings\_object(dict) : Settings/None\\
+%  + set\_from\_dict(dict) : void\\
+%  + gen\_name\_array(void) : list\pyLs{string}\\
+%  + gen\_value\_array(void) : list\pyLs{var}\\
+%  + set\_lines(string, string, string) : void\\

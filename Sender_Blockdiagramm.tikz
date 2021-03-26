@@ -1,0 +1,101 @@
+
+
+\usetikzlibrary{shapes, arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{
+circuits.logic.US,
+circuits.logic.IEC,
+circuits.logic.CDH,
+circuits.ee.IEC,
+}
+
+
+
+
+\newcommand{\Mapper}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick](0,-9)--(0,9);
+\draw[thick](-9,0)--(9,0);
+\draw[](-5.5,5.5)--(-3.5,3.5);
+\draw[](5.5,5.5)--(3.5,3.5);
+\draw[](-5.5,-5.5)--(-3.5,-3.5);
+\draw[](5.5,-5.5)--(3.5,-3.5);
+\draw[](-5.5,3.5)--(-3.5,5.5);
+\draw[](5.5,3.5)--(3.5,5.5);
+\draw[](-5.5,-3.5)--(-3.5,-5.5);
+\draw[](5.5,-3.5)--(3.5,-5.5);
+\end{tikzpicture}
+}
+
+\newcommand{\Shaper}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick] plot[domain=-3*pi:3*pi] (\x,{7*cos(\x/9*4 r)});
+\draw[thick] plot[domain=-3*pi:3*pi] (\x,-4);
+\draw[thick] plot[domain=-7:11] (0,\x);
+\draw[] (0,11)--(1,9);
+\draw[] (0,11)--(-1,9);
+\end{tikzpicture}
+}
+
+\tikzset{%Setup Style for all shapes
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  multi/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate}, % Output
+  connector/.style = {draw,  circle, fill, minimum size=5pt, inner sep=0pt, outer sep=0pt},
+ mapper/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\Mapper}},
+ shaper/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\Shaper}}
+}
+
+\newcommand{\suma}{\Large$+$}
+\newcommand{\multi}{\Large$\times$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}s
+
+\begin{tikzpicture}[auto, thick, >=triangle 45, square/.style={regular polygon,regular polygon sides=4}]
+% Source
+	\node (Source) at (0,0) [circle,draw] {};
+	\node(source) [ above = 0.35cm of Source]{\texttt{Source}};
+%Scrambler
+	\node (Scram) [block , right= 2cm of Source, draw]{  }; 
+	\node (scram) [ above = 0.35cm of Scram]{\texttt{Scrambler}};
+%BCHEncoder
+	\node (Encod) [block , right= 2cm of Scram, draw]{  }; 
+	\node (encod) [ above = 0.35cm of Encod]{\texttt{Codierer}};
+%Mapper
+	\node (Map) [mapper , right= 2cm of Encod, draw]{}; 
+	\node (map) [ above = 0.35cm of Map]{\texttt{Mapper}};
+%Helper
+	\node (helper1) [right = 2cm of Map]{}; 
+%Shaper
+	\node (Shape) [shaper, below = 2cm of helper1, draw]{ }; 
+	\node (shape) [ left = 0.35cm of Shape]{\texttt{Pulsformer}};%Helper
+	\node (helper2) [below = 2cm of Shape]{};
+%Mixer
+	\node (Mixer) [multi, left =2.1cm of helper2] {\multi};
+	\node (fc) [below = 1.5cm of Mixer]{$e^{ j 2\pi f_c t}$};
+	\node (mixer) [ above = 0.35cm of Mixer]{\texttt{Mixer}};
+
+%Real Part
+	\node (Real) [block , left = 2.2cm of Mixer, draw]{ Re$\lbrace   \rbrace$ }; 
+%Pilot Adder
+	\node (PilAdd) [block , left = 2cm of Real, draw]{ }; 
+	\node (pilAdd) [ above = 0.35cm of PilAdd]{\texttt{Pilot Adder}};
+%Sink
+	\node (Sink) [circle,draw, left = 2cm of PilAdd]{};
+	\node(sink) [above = 0.35cm of Sink]{\texttt{Sink}};
+
+%connect them all
+	\draw[->] (Source) -- (Scram) {};
+	\draw[->] (Scram) -- (Encod) {};
+	\draw[->] (Encod) -- (Map) {};
+	\draw[->] (Map) -| (Shape) {};
+	\draw[->] (Shape) |- (Mixer) {};
+	\draw[->] (fc) -- (Mixer) {};
+	\draw[->] (Mixer) -- (Real) {};
+	\draw[->] (Real) -- (PilAdd) {};
+	\draw[->] (PilAdd) -- (Sink) {};
+
+\end{tikzpicture}

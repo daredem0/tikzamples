@@ -1,0 +1,73 @@
+﻿
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
+\usetikzlibrary{snakes}
+
+\def\aA{0.1}
+\def\Point{36.9}
+\tikzset{ 
+big arrow/.style={
+  decoration={markings,mark=at position 1 with {\arrow[scale=5]{latex'}}},
+  postaction={decorate,draw}},
+>=triangle 45 % I ALSO WANT "big arrow" HERE
+}
+
+\tikzset{
+    extra thick/.style={line width=6pt}
+}
+
+\begin{tikzpicture}
+\begin{axis}[
+ axis line style = ultra thick,
+ view={-30}{-30},
+ axis lines=middle,
+ zmax=8,
+ height=12cm,
+ xtick=\empty,
+ ytick=\empty,
+ ztick=\empty,
+xmax=2,
+ymax=2,
+ x label style={at={(axis cs:2,0,-0.1)},anchor=north},
+   xlabel={$y$},
+ y label style={at={(axis cs:0.1,1.8,-0.1)},anchor=north},
+   ylabel={$x$},
+ z label style={at={(axis cs:0.1,0,7.8)},anchor=north},
+   zlabel={$z$},
+label style={font=\huge},
+  tick label style={font=\huge}  ,
+axis line style = {-To}
+]
+\addplot3+[,ytick=\empty,yticklabel=\empty,
+  mark=None,
+  very thick,
+  domain=0:7.33*pi,
+  samples=500,
+samples y=0,
+enlarge x limits=1, enlarge y limits=1, enlarge z limits=1
+]
+({1.8*cos(deg(x))/(sqrt(1+\aA^2*x^2))},
+{1.8*sin(deg(x))/(sqrt(1+\aA^2*x^2))},
+{6*\aA*x/(sqrt(1+\aA^2*x^2))});
+
+\coordinate (a) at (-0.3, 0.3, 2.05);
+\draw[-Stealth, extra thick, blue, draw opacity=0] (-0.4, 0.3, 2.05)--(a);
+\coordinate (b) at (-0.3, 1.16, 0.05);
+\draw[-Stealth, extra thick, blue, draw opacity=0] (-0.4, 1.16, .07)--(b);
+\coordinate (c) at (0, 0.3, 3.81);
+\draw[-Stealth, extra thick, blue, draw opacity=0] (-0.1, 0.3, 3.81)--(c);
+\begin{scope}[very thick,decoration={
+    markings,
+    mark=at position 0.5 with {\arrow{>}}}
+    ] 
+\draw [red,very thick,domain=90:0, postaction={decorate}] plot ({1.8*cos(\x)},0 , {6*sin(\x)});
+\end{scope}
+\end{axis}
+\end{tikzpicture}
+;
+\end{scope}
+\end{axis}
+\end{scope}
+\end{tikzpicture}

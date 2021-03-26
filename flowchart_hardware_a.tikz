@@ -1,0 +1,101 @@
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\newcommand{\mx}[1]{\mathbf{\bm{#1}}} % Matrix command
+\newcommand{\vc}[1]{\mathbf{\bm{#1}}} % Vector command 
+ 
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\tikzset{
+diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.south west) -|
+                         (path picture bounding box.north east) -- cycle;}},
+reversed diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.north west) |- 
+                         (path picture bounding box.south east) -- cycle;}}
+}
+
+% Define a few styles and constants
+\tikzstyle{sub}=[draw, fill=blue!20, text width=7em, 
+    text centered, minimum height=2.5em]
+\tikzstyle{subR}=[draw, fill=red!20, text width=7em, 
+    text centered, minimum height=2.5em]
+\tikzstyle{major}=[draw, text width=7em, 
+    text centered, minimum height=7em,diagonal fill={red!20}{blue!20}]
+\tikzstyle{majorR}=[draw, fill=red!20, text width=7em, 
+    text centered, minimum height=7em]
+\def\blockHorDist{5}
+\def\edgedist{2.5}
+\def\blockwidth{3}
+\def\blockVertDist{1.3}
+\def\offset{(-1.4,0.7)}
+\def\root{(0,0)}
+
+\begin{tikzpicture}[auto, >=triangle 45]
+\begin{scope}[scale=0.8, transform shape]
+    %\node (naveq) [naveqs] {Navigation equations};
+    % Note the use of \path instead of \node at ... below. 
+    \draw (0,\blockVertDist) node (gui) [sub] {GUI};
+    \draw \root node (exp) [sub] {Export/Import};
+    \draw(0,-\blockVertDist) node (script) [sub] {Script};
+
+    \draw \root+(\blockHorDist,0) node (pc) [major] {PC};
+
+    \draw (0,\blockVertDist)+(2*\blockHorDist,0) node (daq) [subR] {DAQ Device};
+    \draw(0,-\blockVertDist)+(2*\blockHorDist,0) node (lab) [subR] {Lab Hardware};
+
+    \draw \root+(3*\blockHorDist,0) node (nmr) [majorR] {NMR Hardware};
+
+	\draw[-] (gui.east) to[out=0,in=180] (pc);
+	\draw[->] (exp) -- (pc);
+	\draw[-] (script.east)  to[out=0,in=180]  (pc);
+
+	\draw[->] (pc) to[out=0,in=180] (daq.west);
+	\draw[->] (pc) to[out=0,in=180] (lab.west);
+    
+	\draw[-] (daq.east) to[out=0,in=180] (nmr);
+	\draw[->,draw opacity=0] (pc) to[out=0,in=180] (nmr);
+	\draw[-] (lab.east) to[out=0,in=180] (nmr);
+    % Unfortunately we cant use the convenient \path (fromnode) -- (tonode) 
+    % syntax here. This is because TikZ draws the path from the node centers
+    % and clip the path at the node boundaries. We want horizontal lines, but
+    % the sensor and naveq blocks aren't aligned horizontally. Instead we use
+    % the line intersection syntax |- to calculate the correct coordinate
+    %\path [draw, ->] (gyros) -- node [above] {a} (naveq.west |- gyros) ;
+    % We could simply have written (gyros) .. (naveq.140). However, it's
+    % best to avoid hard coding coordinates
+    %\path [draw, ->] (accel) -- node [above] {a} (naveq.west |- accel);
+    \node (USER) [above of=gui] {User};
+    \node (HARDWARE) at (USER -| nmr) {Hardware};
+   % 
+   % \draw  (USER.west) - (USER.south) +\offset node (EXP) {Experiment};
+    %\draw [->] (naveq.50) -- node [ann] {Velocity } + (\edgedist,0) node[right] {a};
+    %\draw [->] (naveq.20) -- node [ann] {Attitude} + (\edgedist,0) node[right] { a};
+    %\draw [->] (naveq.-25) -- node [ann] {Horisontal position} + (\edgedist,0)node [right] {a};
+    %\draw [->] (naveq.-50) -- node [ann] {Depth} + (\edgedist,0) no+de[right] {$z$};
+    
+    % Now it's time to draw the colored IMU and INS rectangles.
+    % To draw them behind the blocks we use pgf layers. This way we  
+    % can use the above block coordinates to place the backgrounds   
+    \begin{pgfonlayer}{background}
+        % Compute a few helper coordinates
+        \draw (USER.west)+\offset node (a) {};
+        \draw (nmr.south east)+(+0.5,-1.5) node (b) {};
+        \draw[fill=yellow!20,rounded corners, draw=black!50]
+            (a) rectangle (b);
+		\path let \p1 = (a), \p2 = (b) in node at (\x2/2 - 1.5em, \y2+6) {Experiment Setup};
+		%\node at (\x{a},0) (EXP) {Experiment};
+        \draw (USER.north west -| gui.west) +(-0.2,0.2) node (a) {};
+        \draw (pc.south|-script.south)+(-0.2,-0.4) node (b) {};
+        \draw[fill=blue!10,rounded corners, draw=black!50, dashed]
+            (a) rectangle (b);
+		\draw (USER.north west -| pc) +(0.2,0.2) node (a) {};
+        \draw (nmr.south east |-script.south)+(0.2,-0.4) node (b) {};
+        \draw[fill=red!10,rounded corners, draw=black!50, dashed]
+            (a) rectangle (b);
+    \end{pgfonlayer}
+\end{scope}
+\end{tikzpicture}
+

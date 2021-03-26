@@ -1,7 +1,8 @@
 ﻿\usetikzlibrary[arrows.meta,bending]
+
 \usetikzlibrary{positioning}
 \begin{tikzpicture}
-	\draw[help lines] (0,0) grid (10,10);
+	%\draw[help lines] (0,0) grid (10,10);
 
 \draw [fill] (1,5) circle [radius=0.1];
 \draw [fill] (2,6) circle [radius=0.1];

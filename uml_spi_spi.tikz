@@ -1,0 +1,17 @@
+﻿\def\pyScore{\rule{.4cm}{0.4pt}}
+\begin{tikzpicture}[scale=1]
+\umlclass[x = -3, y =- 13, width =9cm]{namespace::spi::Spi}{
+ - path : string\\ 
+  - bit\_values : list$<$int$>$\\
+  - bool\_values : list$<$bool$>$
+  }{
+ + \pyScore init \rule{.4cm}{0.4pt}(string):void\\
+ + set\_path(string) : void\\
+ + get\_values(void) : list$<$int$>$\\
+ + get\_bool\_values(void) : list$<$bool$>$\\
+ + read\_values(bool) : void\\
+  \umlstatic{+ add\_spi\_config(string, string) : string}\\
+  \umlstatic{+ check\_spi\_files(string, QWidget.QComboBox) : string, int}\\
+ \umlstatic{+ print\_spi(string) : string}
+}
+\end{tikzpicture}

@@ -1,0 +1,18 @@
+\def\umlDist{2}
+\begin{tikzpicture}[node distance=2cm]
+\umlemptyclass[x=-3*\umlDist, y=-1.5*\umlDist]{NMR}
+\umlemptyclass[x=0, y=-1.5*\umlDist]{Signal}
+\umlemptyclass[x=0, y=-3*\umlDist]{Settings}
+\umlemptyclass[x=-3*\umlDist, y=-4.5*\umlDist]{SimplePulseSettings}
+\umlemptyclass[x=3*\umlDist, y=-4.5*\umlDist]{IQPulseSettings}
+\umlemptyclass[x=0, y=-4.5*\umlDist]{PulseShapingSettings}
+\umlemptyclass[x=0, y=-6*\umlDist]{Pulse}
+\umlcompo[arg1=1, align1=left, arg2=3, align2=right]{NMR}{Signal}
+\umlaggreg[arg1=1, align1=left, pos2=.3, pos1=1, arg2=1, align2=right]{Signal}{Settings}
+\umlinherit[geometry=|-]{SimplePulseSettings}{Settings}
+\umlinherit[geometry=|-]{IQPulseSettings}{Settings}
+\umlinherit[geometry=-|]{PulseShapingSettings}{Settings}
+\umlcompo[geometry= |-, arg1=1, align1=left, arg2=1, align2=right, pos2=.3, pos1=.7]{PulseShapingSettings}{Pulse}
+\umlcompo[geometry=|-, arg1=1, align1=left, arg2=1, align2=right, pos2=2]{SimplePulseSettings}{Pulse}
+\umlcompo[geometry=|-, arg1=1, align1=left, arg2=1, align2=right, pos2=2]{IQPulseSettings}{Pulse}
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=1]
+\umlclass[x = -3, y =- 13, width =9cm]{namespace::spi::SpiPulses}{
+ - data\_time : int\\ 
+  - delay : int\\
+  - clock\_time : int\\
+ - sample\_rate : int \\
+ - data : list$<$int$>$\\
+ - data\_len : int\\
+ - data\_buffer : list$<$int$>$\\
+ - clock\_buffer : list$<$int$>$
+  }{
+ + \pyIn{init}(int, int, int, int=1000000, list\pyLs{int}=[0]):void\\
+ + create\_buffer(list$<$int$>$) : (list$<$int$>$, list$<$int$>$, int)
+}
+\end{tikzpicture}

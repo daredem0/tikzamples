@@ -1,0 +1,50 @@
+﻿\begin{tikzpicture}[scale=1]
+\umlclass[x = 5.25, y =-2.25]{pulse::Pulse}{
+	- sample\_rate : int = 1000000\\
+  }{
+ + \pyIn{init}(int) : void\\
+\umlstatic{+ check\_buffers(list\pyLs{int})} : void\\
+ \textit{+ create\_buffer()}\\
+ \textit{+ calc\_measure\_time()}
+...
+}
+\umlclass[x = 1.4, y =-7.25]{pulse::SimplePulse}{
+ + tx\_high\_time : float = 0.0\\
+ + delay : float = 0.005\\
+ + rx\_high\_time : float = 0.0}{
+ + \pyIn{init}(float, float, float, int) \\
+ + create\_buffer(void) : \\ (list \pyLs{var}, int)
+: void\\
+...
+}
+\umlclass[x = 9, y =-7.5]{pulse::PulseShapingPulse}{
+ + tx\_high\_time : float = 0.0\\
+ - pre\_tx\_time : float = 0.0\\
+ + delay : float = 0.005\\
+ + rx\_high\_time : float = 0.0
+}{
+ + \pyIn{init}(float, float, float, float, int) \\
+ + create\_buffer(void) : \\ (list \pyLs{var}, int)
+: void\\
+...}
+\umlinherit[geometry=|-]{pulse::SimplePulse}{pulse::Pulse}
+\umlinherit[geometry=|-]{pulse::PulseShapingPulse}{pulse::Pulse}
+\end{tikzpicture} \noindent
+% \begin{figure}[H]
+% \centering
+% 	\input{./tex/figures/uml_signal_a.tex}
+% 	\caption{Class diagram of \texttt{Signal} and \texttt{Settings}}
+% 	\label{fig:soft_signals_a}
+% \end{figure}ometry=|-]{namespace::settings::SimplePulseSettings}{namespace::settings::Settings}
+
+
+%  
+%  - pulse : Pulse  = None\\
+%   }{
+%  + \pyIn{init}(int, string, string, string, float) : void\\
+%  \umlstatic{+ get\_signal\_object(Settings, int)} : (Signal/None, Exception)\\
+%  + get\_settings\_object(dict) : Settings/None\\
+%  + set\_from\_dict(dict) : void\\
+%  + gen\_name\_array(void) : list\pyLs{string}\\
+%  + gen\_value\_array(void) : list\pyLs{var}\\
+%  + set\_lines(string, string, string) : void\\

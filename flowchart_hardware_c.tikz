@@ -1,0 +1,113 @@
+\usetikzlibrary{shapes, arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{
+circuits.logic.US,
+circuits.logic.IEC,
+circuits.logic.CDH,
+circuits.ee.IEC,
+}
+\tikzset{
+diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.south west) -|
+                         (path picture bounding box.north east) -- cycle;}},
+reversed diagonal fill/.style 2 args={fill=#2, path picture={
+\fill[#1, sharp corners] (path picture bounding box.north west) |- 
+                         (path picture bounding box.south east) -- cycle;}}
+}
+\pgfdeclarelayer{background}
+%\HFilter % Tiefpaß
+\newcommand{\HFilter}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick] plot[domain=-pi:pi] (\x,{-sin(\x r)+2.75});
+\draw[thick] plot[domain=-pi:pi] (\x,{-sin(\x r)-2.75});
+\draw[thick] (-1,-1+2.75)--(1,1+2.75);
+\end{tikzpicture}
+}
+%Hilbertfilter
+\newcommand{\HilFilter}{\begin{tikzpicture}[baseline=0ex, scale=0.06]
+\draw[thick,-{Latex[scale=0.2mm]}]  (-9,0) -- (9,0)  {};
+\draw[thick,-{Latex[scale=0.2mm]}] (0,-9) -- (0,9)  {};
+\draw[red] plot[domain=-6.5:-0.15] (\x,{(\x)^(-1)});
+\draw[red] plot[domain=0.15:6.5] (\x,{(\x)^(-1)});
+\end{tikzpicture}
+}
+
+\tikzset{%Setup Style for all shapes
+  block/.style    = {draw, rectangle, minimum height = 3em,
+    minimum width = 5em,},
+  longBlock/.style    = {draw, rectangle, minimum height = 14.4em,
+    minimum width = 5em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  multi/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate}, % Output
+  connector/.style = {draw,  circle, fill, minimum size=5pt, inner sep=0pt, outer sep=0pt},
+  hFilter/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\HFilter}},
+  hilFilter/.style = {draw, thick, rectangle, minimum height = 3em, minimum width = 3em, label = {center:\HilFilter}}
+}
+
+%define commands for node contents
+\newcommand{\suma}{\Large$+$}
+\newcommand{\multi}{\Large$\times$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+\newcommand{\vertDis}{2}
+\newcommand{\horDis}{5}
+\newcommand{\move}[2]{#1*\horDis, #2*\vertDis}
+
+
+
+\begin{tikzpicture}[auto, node distance=2cm, >=triangle 45] 
+
+\begin{scope}[scale=0.8, transform shape]
+%\draw[style=help lines] (-10,-10) grid (10,10);
+\coordinate (ROOT) at (0,0);
+\coordinate (PC) at (ROOT);
+\coordinate (AWG) at ($(ROOT) + (\move{1}{1})$);
+\coordinate (AWG2) at ($(ROOT) + (\move{1.75}{0})$);
+\coordinate (DAQ) at ($(ROOT) + (\move{1}{-1})$);
+\coordinate (PCB) at ($(ROOT) + (2.5*\move{1}{0})$);
+\coordinate (RF) at ($(ROOT) + (3*\move{1}{0})$);
+\coordinate (H1) at ($(ROOT) + (.5*\move{1}{0})$);
+\coordinate (H2) at ($(ROOT) + (3/2*\move{1}{0})$);
+\coordinate (T2) at ($(ROOT) + (0.5*\move{.75}{-0.5})$);
+\draw
+	node [block, diagonal fill={red!20}{blue!20}] at (PC) (pc) {PC}
+	node [block, fill=red!20] at (AWG) (awg) {AWG 1}
+	node [block, fill=red!20] at (AWG2) (awg2) {AWG 2}
+	node [block, fill=red!20] at (DAQ) (daq) {DAQ}
+	node [draw, fill=red!20, align=left,longBlock] at (PCB) (pcb) {Circuit \\ Board}
+	node [draw, fill=red!20, align=left, block] at (RF) (rf) {RF-Coil};
+
+\draw[transform canvas={yshift=0.4ex},->] (pc.east) to [out=0,in=180] node [sloped, anchor=center, above]{analog} (awg) ;
+
+\draw[->] ([yshift=-1.25ex]awg.east) to [out=0,in=180] node [sloped, anchor=center, above]{Pulse} node [sloped, anchor=center, below]{Shape} (awg2) ;
+\draw[->] (awg2.east) to [out=0,in=180] node [sloped, anchor=center, above]{Mod.} node [sloped, anchor=center, below]{Sine} (pcb) ;
+
+\draw[->] (daq.north) -- node [sloped, anchor=center, above]{Trigger}(awg.south);
+
+%\coordinate (T1) at 
+
+\draw[transform canvas={yshift=0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (pc.east) to [bend left = 24]++(T2) node [xshift=-1ex,yshift=.5ex, below, rotate=-45]{analog} to [bend right = 18] (daq);
+\draw[transform canvas={yshift=-0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (pc.east) to [bend left = 24]++(T2) to [bend right = 18] (daq);
+
+
+%\draw[transform canvas={yshift=0.4ex}, -{Triangle[left,width=2mm,length=2mm]}, rounded corners=4mm] (pc.east) -- ++(T2) |-  (daq);
+%\draw[transform canvas={yshift=-0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (pc.east) to (daq);
+
+\draw[->] ([yshift=1.25ex]awg.east) -- node [sloped, anchor=center, above]{AM-Shape}([yshift=1.25ex]awg.east -| pcb.west);
+
+\draw[transform canvas={yshift=0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (daq.east) -- node [sloped, anchor=center, above]{analog}(daq.east -| pcb.west);
+\draw[transform canvas={yshift=-0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (daq.east) -- (daq.east -| pcb.west);
+
+
+\draw[transform canvas={yshift=0.4ex}, -{Triangle[left,width=2mm,length=2mm]}] (pcb) --node [sloped, anchor=center, above]{} (rf);
+\draw[transform canvas={yshift=-0.4ex}, {Triangle[left,width=2mm,length=2mm]}-] (pcb) -- (rf);
+ \begin{pgfonlayer}{background}
+        % Compute a few helper coordinates
+        \draw[fill=yellow!20,rounded corners, draw=black!50]
+            ($(pc.west |- pcb.north) + (-.25,.35)$) rectangle ($(rf.east |- pcb.south) + (.25,-.25)$);
+    \end{pgfonlayer}
+\end{scope}
+\end{tikzpicture}
