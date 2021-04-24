@@ -1,0 +1,43 @@
+%mainly helping my laziness to flourish
+
+%Makros
+%Makro Color
+%#1 Text
+\def\colBord#1{\begingroup\color{Fuchsia}{#1}\endgroup}
+\def\colRed#1{\begingroup\color{Red}{#1}\endgroup}
+\def\colGreen#1{\begingroup\color{LimeGreen}{#1}\endgroup}
+\def\colBlue#1{\begingroup\color{NavyBlue}{#1}\endgroup}
+
+\def\usGreen#1#2{\underset{\colGreen{#1}}{#2}}
+\def\usBord#1#2{\underset{\colBord{#1}}{#2}}
+
+\def\ubGreen#1#2{\underbrace{#2}_{\colGreen{#1}}}
+
+
+\def\uni#1{\left[\SI{}{#1}\right]}
+
+\def\|{\;|\;}
+\def\ssum{ \sum_{k=1}^n}
+
+%Some stuff i just dont wanna write everytime
+\def\fermi{Fermi-Dirac-Verteilung}
+\def\ul#1{\underline{#1}}
+\def\€{\euro{}}
+\def\epsF{\pmb{\varepsilon}}
+
+\newcommand{\leftRightsection}[2]{
+\begin{minipage}[t]{0.5\linewidth}
+	\flushleft
+	\textbf{#1}
+\end{minipage}
+	\hfill
+\begin{minipage}[t]{0.4\linewidth}
+	\flushright
+	\textbf{#2}
+\end{minipage}
+}
+\newcommand{\dottedSection}[2]{
+\begin{minipage}[t]{0.95\linewidth}
+	\textbf{#1 \dotfill #2}
+	\end{minipage}
+}

@@ -9,11 +9,8 @@ font=\footnotesize,
 >=latex,   %Voreinstellung für Pfeilspitzen
 join=round,scale=1, every node/.style={scale=1}]
 \tikzstyle{conefill} = [pattern=north east lines, pattern color=blue]
-% Gitternetzlinien
-%\draw[ help lines] (0,-3.5) grid (10,10);
-
+% x-Achse
 \draw[->] (0,0) -- (10,0) node[below] {$x$}; 
-
 % y-Achse 
 \draw[->] (0,-1) -- (0,5) node[left] {$E$};%node[above left]
 
@@ -60,9 +57,14 @@ join=round,scale=1, every node/.style={scale=1}]
 \coordinate (K) at (7.25,1.9);
 \filldraw[conefill](A)--(C)--(D)--(F)--(G)--(H)--(E)--(I)--(J)--(K)--(B)--cycle;
 \node at (-0.3, 4) {$E_A$};
+\end{tikzpicture}
+
+(K)--(B)--cycle;
+\node at (-0.3, 4) {$E_A$};
 
 \end{tikzpicture}
-w[black, thick](2.25,-0.5) circle [radius=0.3] node{$+$};
+
+ick](2.25,-0.5) circle [radius=0.3] node{$+$};
 \draw[black, thick](3.75,-0.5) circle [radius=0.3] node{$+$};
 \draw[black, thick](5.25,-0.5) circle [radius=0.3] node{$+$};
 \draw[black, thick](6.75,-0.5) circle [radius=0.3] node{$+$};

@@ -1,0 +1,57 @@
+%This file contains loosely and not sorted math definitions...
+
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\diverg}{div}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\spur}{spur}
+\DeclareMathOperator{\determ}{det}
+\DeclareMathOperator{\sinc}{sinc}
+
+% Umgebungen für Definitionen, Sätze, usw.
+\newtheorem{satz}{Satz}[section]
+\newtheorem{definition}[satz]{Definition}     
+\newtheorem{lemma}[satz]{Lemma}	
+\newtheorem{bem}{Bemerkung}[section]
+\newtheorem{bsp}{Beispiel}[section]
+% Es werden Sätze, Definitionen etc innerhalb einer Section mit
+% 1.1, 1.2 etc durchnummeriert, ebenso die Gleichungen mit (1.1), (1.2) ..                  
+\numberwithin{equation}{section}
+
+
+%neue Befehle definieren
+\newcommand{\R}{\mathbb{R}} %zB \R als Abkürzung für das Symbol der reellen Zahlen
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\diffp}{\partial}
+\newcommand{\lapl}{\Delta}
+%\def\lapl{\Delta}
+%\newcommand{\diverg}{\operatorname{div}}
+
+\def\vecT#1{\left(\begin{array}{c} #1 \end{array}\right)}
+\def\dddot{\cdot \\ \cdot \\ \cdot}
+\def\vecD#1{\vecT{#1_1 \\ \dddot \\ #1_d}}
+\def\vecDt#1#2{\vecT{#1 \\ \dddot \\ #2}}
+\def\vecN{\mathcal{O}}
+\def\vspan#1{span \lbrace #1 \rbrace}
+\def\vdim#1{dim \lbrace #1 \rbrace}
+\def\vker#1{ker \lbrace #1 \rbrace}
+\def\vrang#1{Rang \lbrace #1 \rbrace}
+\def\mzxz#1#2#3#4{\left(\begin{array}{c c} #1 & #2 \\ #3 & #4 \\ \end{array}\right)}
+\def\mdxd#1#2#3{\left(\begin{array}{c c c} #1 \\ #2 \\ #3 \end{array}\right)}
+\def\dfp#1#2{\frac{\partial #1}{\partial #2}}
+\def\diff#1#2{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+
+\def\fracd#1#2{\displaystyle\frac{#1}{#2}}
+
+
+\def\inR#1{\qquad ,\; #1 \in \R}
+\def\inRs{\in \R}
+\def\bracks#1{\left[ #1 \right]}
+\def\abs#1{\left| #1 \right|}
+\def\brac#1{\left( #1 \right)}
+\def\dx{\;dx}
+\def\dy{\;dy}
+\def\dz{\;dz}
+\def\dX{\;d\vec{x}}

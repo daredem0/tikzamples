@@ -1,0 +1,60 @@
+﻿\usetikzlibrary[arrows.meta,bending]
+\usetikzlibrary{positioning}
+\usetikzlibrary{snakes}
+\usetikzlibrary{patterns}
+
+\begin{tikzpicture}[
+x=1cm, y=1cm,  scale=1.0, 
+font=\footnotesize,
+>=latex,   %Voreinstellung für Pfeilspitzen
+join=round,scale=1, every node/.style={scale=1}]
+\tikzstyle{conefill} = [pattern=north east lines, pattern color=blue]
+% x-Achse
+\draw[->] (0,0) -- (10,0) node[below] {$x$}; 
+% y-Achse 
+\draw[->] (0,-1) -- (0,5) node[left] {$E$};%node[above left]
+
+\draw[thick, color=black]plot[samples=200, domain=0.5:0](\x,{(-8*(\x)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=2:1](\x,{(-8*(\x-1.5)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=3.5:2.5](\x,{(-8*(\x-3)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=5:4](\x,{(-8*(\x-4.5)^2+2)});
+\draw[thick, color=black]plot[samples=200, domain=6.5:5.5](\x,{(-8*(\x-6)^2+2)});
+
+\draw[black, thick, color=black, rounded corners = 18pt](7, 0) --(7.2, 2)  -- (8,3)--(10,3.8);
+\draw[black, thick, color=black, rounded corners = 18pt](7, 0) --(7.2, 2)  -- (8,3)--(9,2.4)--(10,1);
+\draw[black, thick, color=black, rounded corners = 18pt](7, 0) --(7.2, 2)  -- (8,3)--(9,2.4)--(10,0);
+
+\draw[line width=.5pt, color=blue, dash pattern=on 15pt off 15pt](0,4)--(10,4);
+
+\draw[thick, color=blue](0,2)--(7.3,2);
+
+\draw[thick, color=blue, dash pattern=on 29.7pt off 13pt](0.23,1.55)--(7.15,1.55);
+\draw[thick, color=blue, dash pattern=on 28.7pt off 14pt](0.25,1.45)--(7.14,1.45);
+
+\draw[thick, color=blue, dash pattern=on 23pt off 19.7pt](0.35,1.05)--(7.1,1.05);
+\draw[thick, color=blue, dash pattern=on 22.6pt off 20.1pt](0.35,.95)--(7.1,.95);
+
+\draw[thick, color=blue, dash pattern=on 18.4pt off 24.2pt](0.44,.55)--(7.05,.55);
+\draw[thick, color=blue, dash pattern=on 18.2pt off 24.4pt](0.44,.45)--(7.05,.45);
+
+\draw[black, thick](0.75,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](2.25,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](3.75,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](5.25,-0.5) circle [radius=0.3] node{$+$};
+\draw[black, thick](6.75,-0.5) circle [radius=0.3] node{$+$};
+
+
+\coordinate (A) at (0,2);
+\coordinate (B) at (7.3,2);
+\coordinate (C) at (0, 4);
+\coordinate (D) at (10,4);
+\coordinate (F) at (10,3.8);
+\coordinate (G) at (9,3.4);
+\coordinate (H) at (8.6, 3.25);
+\coordinate (E) at (8.2,3);
+\coordinate (I) at (8,2.9);
+\coordinate (J) at (7.5,2.4);
+\coordinate (K) at (7.25,1.9);
+\filldraw[conefill](A)--(C)--(D)--(F)--(G)--(H)--(E)--(I)--(J)--(K)--(B)--cycle;
+\node at (-0.3, 4) {$E_A$};
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+\babel@toc {ngerman}{}
+\contentsline {section}{Abbildungsverzeichnis}{2}{Doc-Start}%
+\contentsline {section}{\numberline {1}Allgemeine Zusammenhänge}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Mathematik}{3}{subsection.2}%
+\contentsline {subsection}{\numberline {1.2}Radiometrik}{3}{subsection.4}%
+\contentsline {subsection}{\numberline {1.3}Photometrik}{3}{subsection.13}%
+\contentsline {subsection}{\numberline {1.4}Kontrast}{4}{subsection.18}%
+\contentsline {subsection}{\numberline {1.5}Abtasttheorem}{4}{subsection.22}%
+\contentsline {subsection}{\numberline {1.6}Tristimulus Theorie}{4}{subsection.29}%
+\contentsline {subsection}{\numberline {1.7}Normspektralwertfunktion (CIE)}{5}{subsection.37}%
+\contentsline {subsubsection}{\numberline {1.7.1}Umrechnung CIE 1931 und CIE 1964}{6}{subsubsection.50}%
+\contentsline {subsubsection}{\numberline {1.7.2}Mischfarbe}{6}{subsubsection.53}%
+\contentsline {section}{\numberline {2}Anhänge}{7}{section.55}%
+\contentsline {subsection}{\numberline {2.1}Nachwort}{7}{subsection.56}%

@@ -1,0 +1,117 @@
+\subsection{Mathematik}
+Rotationsmatrizen:
+\begin{equation}
+\left(\begin{array}{c c c}
+    1 & 0 &  0\\
+    0&  \cos \alpha & - \sin \alpha\\
+    0 & \sin \alpha &  \cos \alpha \\
+    \end{array}\right),
+    \quad
+    \left(\begin{array}{c c c}
+   \cos \alpha & 0 &  \sin \alpha\\
+    0&  1 & 0\\
+    -\sin \alpha & 0 &  \cos \alpha \\
+    \end{array}\right),
+    \quad
+    \left(\begin{array}{c c c}
+   \cos \alpha & -\sin \alpha &  0\\
+    \sin \alpha &   \cos \alpha & 0\\
+    0 & 0 &  1 \\
+    \end{array}\right)
+\end{equation}
+
+\subsection{Radiometrik}
+\formTab{Strahlungsfluss}{\Phi_e \uni{W}}
+\formTab{Raumwinkel}{\Omega = \displaystyle\frac{A}{r^2} \uni{sr}}
+\formTab{Strahlstärke}{I_e = \displaystyle\frac{d}{d\Omega} \Phi_e \uni{\frac{W}{sr}}}
+\formTab{Strahldichte}{L_e = \displaystyle\frac{d I_e}{d A_1 \cdot \cos \varepsilon_1} \uni{\frac{W}{sr \cdot m^2}}}
+\formTab{Spektraler Strahlungsfluss}{\Phi_{e\lambda} = \displaystyle\frac{d}{d\lambda} \Phi_e}
+\formTab{Gesamter Strahlungsfluss}{\Phi_e = \displaystyle \int_{\lambda_1}^{\lambda_2} \Phi_{e\lambda} \; d\lambda}
+\formTab{Bestrahlungstärke}{E_e = \fracd{d}{d A_2}\Phi_e}
+\formTab{Bestrahlungsstärke (schräg)}{E_2 = \fracd{I_e \cdot \cos \alpha}{r^2}}
+
+\subsection{Photometrik}
+\formTab{Lichtstrom}{\Phi_\nu = K_m \displaystyle \int_{\SI{380}{nm}}^{\SI{780}{nm}} \Phi_{e\lambda} V(\lambda)\;d\lambda \uni{lm}}
+Wobei $V(\lambda)$ die Helligkeitsempfindlichkeitskurve des menschlichen Auges bei Tagsehen und $K_m = \SI{683}{\frac{lm}{W}}$ das maximale photometrische Strahlungsäquivalent ist.
+\formTab{Lichtstärke}{I_v \left[\SI{1}{cd} = \SI{1}{\frac{lm}{sr}} \right]}
+\formTab{Leuchtdichte}{L_v = \dfrac{dI}{d A_1 \cdot \cos \varepsilon} \left[ \SI{1}{nit} = \SI{1}{\frac{cd}{m^2}}\right]}
+\formTab{Beleuchtungsstärke}{E_v \left[\SI{}{lx} = \SI{}{\frac{lm}{m^2}}\right]}
+
+\subsection{Kontrast}
+\formTab{Kontrast}{C = \dfrac{L_{max}}{L_{min}}}
+\formTab{Kontrast transmissiv}{C_{trans,max} = \dfrac{T_{max} \cdot L_{Hintergrund,max}}{T_{min} \cdot L_{Hintergrund,min}}}
+\formTab{Kontrast transmissiv}{C_{real,max} = \dfrac{L_{max,display} + L_{Reflexion, Umgebung}}{L_{min,display} + L_{Reflexion, Umgebung}}}
+Der Dunkelzustand bestimmt den Kontrast.
+
+\subsection{Abtasttheorem}
+\formTab{Räumliche Frequenz}{\omega_r = 2\pi f = 2 \pi \dfrac{1}{d}}
+\formTab{Räumliche Frequenz(b)}{f_{r,rad} = f_r \dfrac{360^\circ}{2 \pi}\dfrac{c}{rad}}
+\formTab{Obere Bandgrenze}{f_t \approx \SI{10}{Hz} \quad f_r \approx \SI{8}{\frac{c}{deg}}}
+\formTab{Räumliche Bandgrenze für kontinuerlichen Eindruck}{\Theta_a < \frac{1}{2 \omega_{gr}}}
+\formTab{Bildmittenabstand}{d = \Theta l}
+\formTab{Umrechnung dpi}{x[\SI{}{dpi}] = \dfrac{\SI{2.54}{cm}}{x[\SI{}{m}]}}
+\subsection{Tristimulus Theorie}
+Es existieren drei Zapfenarten: 
+\begin{itemize}
+\item Kurzwellig: $s \approx \SI{400}{nm}$
+\item Mittelwellig: $m \approx \SI{550}{nm}$
+\item Littelwellig: $l \approx \SI{580}{nm}$
+\end{itemize} 
+
+\formTab{S-Valenz}{S = k_s \displaystyle \int_{\SI{380}{nm}}^{\SI{780}{nm}} \Phi_e(\lambda) s(\lambda)\; d\lambda}
+\formTab{M-Valenz}{M = k_s \displaystyle \int_{\SI{380}{nm}}^{\SI{780}{nm}} \Phi_e(\lambda) m(\lambda)\; d\lambda}
+\formTab{L-Valenz}{L = k_s \displaystyle \int_{\SI{380}{nm}}^{\SI{780}{nm}} \Phi_e(\lambda) l(\lambda)\; d\lambda}
+
+\noindent Wobei $k_s$ eine Proportionalitätskonstante ist und die Valenzen $S$, $M$ und $L$ den Ausgangssignalen der einzelnen Zapfen entsprechen.
+
+\formTab{s-Farbwertanteil}{\hat{s} = \dfrac{S}{S + M + L}}
+\formTab{m-Farbwertanteil}{\hat{m} = \dfrac{M}{S + M + L}}
+\formTab{l-Farbwertanteil}{\hat{l} = \dfrac{L}{S + M + L}}
+\formTab{Summe der Farbwertanteile}{\hat{s} + \hat{m} + \hat{l} = 1}
+
+\subsection{Normspektralwertfunktion (CIE)}
+Die Festlegung ergibt sich durch:
+\begin{align}
+x(\lambda) &= a\cdot s(\lambda) + b\cdot m(\lambda) + c \cdot l(\lambda)\\
+y(\lambda) &= d\cdot s(\lambda) + e\cdot m(\lambda) + f \cdot l(\lambda)\\
+z(\lambda) &= g\cdot s(\lambda) + h\cdot m(\lambda) + i \cdot l(\lambda)
+\end{align}
+wobei die Koeffizienten so gewählt sind, dass:
+\begin{itemize}
+	\item alle Kurven positiv sind
+	\item $y(\lambda) = V(\lambda)$ gilt
+\end{itemize}
+
+\formTab{X-Valenz}{X = k_s \displaystyle \int_{\SI{380}{nm}}^{\SI{780}{nm}} \Phi_e(\lambda) x(\lambda)\; d\lambda}
+\formTab{Y-Valenz}{Y = k_s \displaystyle \int_{\SI{380}{nm}}^{\SI{780}{nm}} \Phi_e(\lambda) y(\lambda)\; d\lambda}
+\formTab{Z-Valenz}{Z = k_s \displaystyle \int_{\SI{380}{nm}}^{\SI{780}{nm}} \Phi_e(\lambda) z(\lambda)\; d\lambda}
+
+Wobei $Y$ direkt dem Helligkeitseindruck beim Menschen entspricht, also der Leuchtdichte. 
+
+\formTab{x-Normfarbwertanteil}{x = \dfrac{X}{X+Y+Z}}
+\formTab{y-Normfarbwertanteil}{y = \dfrac{Y}{X+Y+Z}}
+\formTab{z-Normfarbwertanteil}{z = \dfrac{Z}{X+Y+Z}}
+\formTab{Summe der Normfarbwertanteile}{x + y + z = 1}
+
+\begin{itemize}
+	\item CIE 1931: $2^\circ$ Gesichtsfeld $\Rightarrow$ Unbuntpunkt bei $(x,y) = (0.33, 0.33)$
+	\item CIE 1964: $10^\circ$ Gesichtsfeld
+\end{itemize}
+
+Bei diskreten Werten gilt:
+\begin{align}
+	X &= K \sum\limits_{k=0}^{n-1} \phi_e \left( \lambda_u + k \Delta \lambda\right) \overline{x}\left(\lambda_u + k \Delta \lambda \right)\Delta \lambda
+	\intertext{mit}
+	\Delta \lambda &= \dfrac{\lambda_o - \lambda_u}{n-1}
+\end{align}
+
+\subsubsection{Umrechnung CIE 1931 und CIE 1964}
+\formTab{1931 $\rightarrow$ 1964}{u' = \dfrac{4x}{-2x+12y+3} \qquad v'=\dfrac{9y}{-2x+12y+3}}
+\formTab{1964 $\rightarrow$ 1931}{x = \dfrac{9u'}{6u'-16v'+12} \qquad y=\dfrac{4v'}{6u'-16v'+12}}
+
+\subsubsection{Mischfarbe}
+Eine Mischfarbe lässt sich als lineare Überlagerung der Form
+\begin{equation}
+	\vecT{X_M \\Y_M \\ Z_M} = r \vecT{X_R \\Y_R \\ Z_R} + g\vecT{X_G \\Y_G \\ Z_G} + b \vecT{X_B \\Y_B \\ Z_B}
+\end{equation}
+beschreiben.

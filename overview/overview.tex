@@ -1,0 +1,134 @@
+%%%%%Präambel%%%%%
+%Document Style/Page Style
+\documentclass[12pt,a4paper]{article}%Schriftgröße, Papierformat einstellen
+%\documentclass{scrbook}
+\usepackage[top=20mm,bottom=20mm,left=10mm,right=10mm]{geometry}
+\usepackage{lipsum}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc} %für Windows, Linux
+\usepackage{titlesec} %improve toc with breaks et cetera
+\usepackage{filecontents} %allows to override existing files
+\usepackage[nottoc,numbib]{tocbibind}%Add or not add bibliography/index to table of content
+
+%header and footer options
+\usepackage{scrlayer-scrpage} %footers and headers
+\pagestyle{scrheadings} %style of headers
+\clearscrheadfoot %reset everything
+\automark[section]{section}
+\ofoot{\pagemark}
+\ifoot{}
+\chead{\headmark}
+\setfootsepline{1pt}
+\setheadsepline{1pt}
+%\setheadsepline[\textwidth+20pt]{0.5pt}
+
+%Citing/Quotation
+\usepackage{cite} %improves citation
+\usepackage{csquotes}%support for multiple quotation styles
+%Pakete laden zur deutschen Rechtschreibung und für Umlaute
+\usepackage{harvard} %harvard quotation style
+\let\harvardleftorig\harvardleft %option for harvard package
+
+%Symbols
+\usepackage[official]{eurosym} %euro symbol
+\usepackage{cancel} %diagonal lines for cancelling 
+\usepackage{stmaryrd} %St Mary Road symbols for theoretical computer science
+\usepackage{units} %set units in typographically correct way
+\usepackage{siunitx} %use si units
+\usepackage{esvect} %Vectors with arrows
+\usepackage{trfsigns} %Transformationszeichen
+\usepackage{calc} %adds simple arithmetic functions
+\usepackage{amsmath,amssymb,amsthm,amsopn} %mathematic symbols and stuff
+\usepackage{bm} %bold symbols in math
+
+%Tables/Environments
+\usepackage{longtable} %tables that go more than one page
+\usepackage{multirow} %table cell over multiple rows
+\usepackage{tabularx} %tabularx environment
+\usepackage{booktabs} %provides extra commands for tables
+\usepackage{caption} %customise caption in floating environments
+\usepackage{array} %use array package
+\usepackage{autobreak} %adds line breaking withig align environment
+\usepackage{wrapfig} %allows figures or tables to have text wrapped around them
+\usepackage{float} %adds options for configuraiton of floationg environments ([H] for example)
+\usepackage{hhline} %better horicontal lines
+
+%Misc
+\usepackage{graphicx} %optional arguments for includegraphics
+\usepackage[dvipsnames]{xcolor} %access to color tones/shades and so on
+%\usepackage{subcaption} %test about better image alignment%outdated
+\usepackage{subfig}%test about better image alignment
+
+\usepackage{chngcntr} %not quite sure, propably used to specify counting for formulas and stuff
+%\usepackage[round]{natbib}
+%\usepackage{hyperref}
+
+%Inhaltsverzeichnis mit Links erstellen
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+citecolor = black] {hyperref}
+
+%set depth of toc to specific number
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+%change how paragraph worls
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+%define subsubsubsection
+\newcommand{\subsubsubsection}{\paragraph}
+
+\input{./tex/helpers/preamble.tex}
+\input{./tex/helpers/helpers.tex}
+\input{./tex/helpers/maths.tex}
+\input{./tex/helpers/citation.tex}
+\input{./tex/helpers/formula_functions.tex}
+\input{./tex/helpers/tikzDefs.tex}
+
+%really not sure anymore what this is
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+
+%settings about equation numbering
+\renewcommand{\theequation}{\arabic{section}.\arabic{subsection}
+.\arabic{equation}}
+%Setzt den equation-Zaehler nach jeder Seite zurueck
+%\numberwithin{equation}{subsection}	
+\numberwithin{equation}{section}
+%\setlength\abovedisplayskip{0pt}
+
+%documentspecific definitions
+\newcommand{\ld}{\text{ld}}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+%jetzt beginnt das eigentliche Dokument
+
+\begin{document}
+\bibliographystyle{agsm}
+
+\author{}
+\input{./tex/begin/front.tex}
+%\input{./tex/begin/quote.tex}
+\input{./tex/begin/begin.tex}
+
+
+%
+\input{./tex/ch1/chapter1.tex}
+ 
+
+\newpage
+\input{./tex/che/chapter_end.tex}
+
+%\nocite{*}
+\bibliography{./bib/lit}
+
+\end{document}
